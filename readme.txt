@@ -1,3 +1,3 @@
-Projet ackathon 
+Projet hackathon 
 Bruxelles formation 2020
-Permafunghi
+Permafungi
