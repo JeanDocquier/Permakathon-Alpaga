@@ -1,7 +1,6 @@
 {
-    "Mois" : ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
-    "Mar collecté" : [2400, 1900, 2619, 3030, 2048, 1280, 0, 0, 0, 2521, 2391, 2048],
-    "Total récolte pleures (kg)" : [839, 681, 914, 1072, 715, 446, 0, 0, 0, 881, 834, 715],
-    "Total récolte pieds (kg)" : [419, 340, 457, 536, 357, 1876, 987, 8876, 654, 876, 1298, 431],
-    "Total récolte panicaults (kg)" : [93, 145, 73, 99, 64, 759, 855, 1625, 566, 7595, 1124, 373]
+    "mar_collecte" : [2400, 1900, 2619, 3030, 2048, 1280, 0, 0, 0, 2521, 2391, 2048],
+    "total_recolte_pleures_kg" : [839, 681, 914, 1072, 715, 446, 0, 0, 0, 881, 834, 715],
+    "total_recolte_pieds_kg" : [419, 340, 457, 536, 357, 1876, 987, 8876, 654, 876, 1298, 431],
+    "total_recolte_panicaults_kg" : [93, 145, 73, 99, 64, 759, 855, 1625, 566, 7595, 1124, 373]
 }
