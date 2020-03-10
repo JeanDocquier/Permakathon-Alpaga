@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolBox", "ToolBox\ToolBox.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PermaFungi.DAL", "PermaFungi.DAL\PermaFungi.DAL.csproj", "{5FBB811D-1B35-4A92-B7F3-A55E32AF778A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PermaFungiTest", "PermaFungiTest\PermaFungiTest.csproj", "{2706BF3D-A6DF-4AAF-AFAA-992FC99918AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5FBB811D-1B35-4A92-B7F3-A55E32AF778A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FBB811D-1B35-4A92-B7F3-A55E32AF778A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FBB811D-1B35-4A92-B7F3-A55E32AF778A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2706BF3D-A6DF-4AAF-AFAA-992FC99918AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2706BF3D-A6DF-4AAF-AFAA-992FC99918AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2706BF3D-A6DF-4AAF-AFAA-992FC99918AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2706BF3D-A6DF-4AAF-AFAA-992FC99918AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

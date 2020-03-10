@@ -6,3 +6,11 @@ C:\Users\dotnet\Source\Repos\Permakathon-Alpaga\PermaFungi.DAL\obj\Debug\PermaFu
 C:\Users\dotnet\Source\Repos\Permakathon-Alpaga\PermaFungi.DAL\obj\Debug\PermaFungi.DAL.csproj.CopyComplete
 C:\Users\dotnet\Source\Repos\Permakathon-Alpaga\PermaFungi.DAL\obj\Debug\PermaFungi.DAL.dll
 C:\Users\dotnet\Source\Repos\Permakathon-Alpaga\PermaFungi.DAL\obj\Debug\PermaFungi.DAL.pdb
+C:\Tarik\Permakathon-Alpaga\PermaFungi.DAL\bin\Debug\PermaFungi.DAL.dll
+C:\Tarik\Permakathon-Alpaga\PermaFungi.DAL\bin\Debug\PermaFungi.DAL.pdb
+C:\Tarik\Permakathon-Alpaga\PermaFungi.DAL\bin\Debug\ToolBox.dll
+C:\Tarik\Permakathon-Alpaga\PermaFungi.DAL\bin\Debug\ToolBox.pdb
+C:\Tarik\Permakathon-Alpaga\PermaFungi.DAL\obj\Debug\PermaFungi.DAL.csprojAssemblyReference.cache
+C:\Tarik\Permakathon-Alpaga\PermaFungi.DAL\obj\Debug\PermaFungi.DAL.csproj.CopyComplete
+C:\Tarik\Permakathon-Alpaga\PermaFungi.DAL\obj\Debug\PermaFungi.DAL.dll
+C:\Tarik\Permakathon-Alpaga\PermaFungi.DAL\obj\Debug\PermaFungi.DAL.pdb
