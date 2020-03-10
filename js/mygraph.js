@@ -8,11 +8,45 @@ var donnee_tableau = document.querySelectorAll('.donnee-chiffree');
 //console.log(donnee_tableau);
 for (var i = 0; i < donnee_tableau.length; i++) {
     donnee_tableau[i].addEventListener("change", function () {
-        getTableau();
+        
+        createTableauUI();
     });
 }
 
+function createTableauUI(donneesJSON) {
+    var tableau = document.querySelector('.tableau-donnees');
+            tableau.innerHTML = " ";
 
+    console.log(tableau);
+    for (mydata in donneesJSON) {
+        var donnees = donneesJSON[mydata]
+        if (mydata == "mois") {
+            var entete = document.createElement('tr');
+            var info_ligne = document.createElement('th');
+            info_ligne.textContent = mydata;
+            entete.appendChild(info_ligne);
+            for (var i = 0; i < donnees.length; i++) {
+
+                var cellule_donnee = document.createElement('th');
+                cellule_donnee.textContent = donnees[i];
+                entete.appendChild(cellule_donnee);
+            }
+            tableau.appendChild(entete);
+
+        } else {
+            var row = document.createElement('tr');
+            var info_ligne = document.createElement('td');
+            info_ligne.textContent = mydata;
+            row.appendChild(info_ligne);
+            for (var i = 0; i < donnees.length; i++) {
+                var cellule_donnee = document.createElement('td');
+                cellule_donnee.textContent = donnees[i];
+                row.appendChild(cellule_donnee);
+            }
+            tableau.appendChild(row);
+        }
+    }
+}
 
 /*** 
 
@@ -23,7 +57,7 @@ CREATION GRAPHIQUES
 var couleursgraph = ['#6464ff', '#6fd060', '#EBC65D', '#FF8882', '#886BE8', '#75FFEC'];
 
 
-function getTableau(donneesJSON, mois) {
+function getTableauGraph(donneesJSON, mois) {
     var array_mois = [];
     for (mydata in donneesJSON) {
         var meschiffres = donneesJSON[mydata];
@@ -147,7 +181,7 @@ function createDataSet(mylabel, myColor, mydata_numbers) {
 
 //ON VA CREER UN TABLEAU DE DATASETS EN FONCTION DE LA LONGUEUR DU TABLEAU dataJSON
 // --> RETOURNE UN TABLEAU
-function getDataSet(donneesJSON, typeofgraph, moisbar = 0/**JANVIER PAR DEFAUT**/) {
+function getDataSet(donneesJSON, typeofgraph, moisbar = 0 /**JANVIER PAR DEFAUT**/ ) {
     var arrayOfDataSets = [];
     if (typeofgraph == "line") {
         //console.log("graph-line");
@@ -159,20 +193,19 @@ function getDataSet(donneesJSON, typeofgraph, moisbar = 0/**JANVIER PAR DEFAUT**
                 arrayOfDataSets.push(createDataSet(label, attributeColor(), meschiffres));
             }
         }
-    }
-    else{
+    } else {
         //console.log("graph-bar");
-        var mybar = getTableau(donneesJSON, moisbar)
-            console.log(mybar);
-        
-        for (var i = 1 ; i< mybar.length ; i++){
+        var mybar = getTableauGraph(donneesJSON, moisbar)
+        //console.log(mybar);
+
+        for (var i = 1; i < mybar.length; i++) {
             var label_bar = mybar[i][0];
             var data_bar = mybar[i][1];
-            console.log(label_bar);
-            console.log(data_bar);
+            //console.log(label_bar);
+            //console.log(data_bar);
             //console.log(typeof data_parsed);
-            console.log(createDataSet(label_bar, attributeColor(), data_bar));
-            arrayOfDataSets.push(createDataSet(label_bar, attributeColor(), data_bar));    
+            //console.log(createDataSet(label_bar, attributeColor(), data_bar));
+            arrayOfDataSets.push(createDataSet(label_bar, attributeColor(), data_bar));
         }
     }
     //console.log(arrayOfDataSets)
@@ -234,13 +267,14 @@ function getGraph() {
                 //console.log(dataJson);
                 //console.log(getMois(dataJson));
                 getDataSet(dataJson);
-                //console.log(getTableau(dataJson, 4)[1]);
+                createTableauUI(dataJson);
+                //console.log(getTableauGraph(dataJson, 4)[1]);
                 couleursgraph = ['#6464ff', '#6fd060', '#EBC65D', '#FF8882', '#886BE8', '#75FFEC'] //On réinitalise le tableau des couleurs
                 createGraph("graphique-annuel", "line", getMois(dataJson), dataJson);
                 //console.log(getDataSet(dataJson, 2));
-                //console.log(getTableau(dataJson, 0));
+                //console.log(getTableauGraph(dataJson, 0));
                 couleursgraph = ['#6464ff', '#6fd060', '#EBC65D', '#FF8882', '#886BE8', '#75FFEC'] //On réinitalise le tableau des couleurs
-                createGraph("graphique-mensuel", "bar", getTableau(dataJson, moisselect)[0], getTableau(dataJson, moisselect));
+                createGraph("graphique-mensuel", "bar", getTableauGraph(dataJson, moisselect)[0], getTableauGraph(dataJson, moisselect));
 
             } else {
                 // ERREUR

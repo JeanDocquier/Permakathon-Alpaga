@@ -23,17 +23,8 @@
             </select>
         </div>
         <div class="le-tableau">
-            <table>
-                <?php 
-                for ($i=0 ; $i < 3 ; $i++){
-                    echo '<tr class="nom-class">';
-                        for ($j=0 ; $j < 12 ; $j++){
-                            echo '<td class="donnee-chiffree"><input type="number" value="31"></td>';
-                        }
-                    echo '</tr>';
-                }
+            <table class="tableau-donnees">
                 
-                ?>
 
             </table>
         </div>

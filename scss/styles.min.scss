@@ -216,7 +216,7 @@ canvas {
     width: 1000px;
 }
 
-.liste-utilisateur {
+.liste-utilisateur, .tableau-donnees {
     tr td:nth-of-type(1),
     tr > th:nth-of-type(1) {
         width: 400px;
