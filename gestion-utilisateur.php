@@ -19,13 +19,17 @@
            Ajouter utilisateur
        </a>
        <form action="" method="post" class="ajout-utilisateur">
-           <input type="text" placeholder="Identifiant" class="identifiant-inscription" name="identifiant-inscription">
-           <input type="text" placeholder="Fonction" class="fonction-inscription" name="fonction-inscription">
+           <input required type="text" placeholder="Identifiant" class="identifiant-inscription" name="identifiant-inscription">
+           <select type="text" placeholder="Fonction" class="fonction-inscription" name="fonction-inscription">
+                <option value="Employe">Employe</option>
+               <option value="Comptable">Comptable</option>
+               <option value="Admin">Admin</option>
+           </select>
            <input class="valider-ajout" type="submit" value="Ajouter">
            <span class="fermeture-ajout-utilisateur"><i class="fas fa-window-close"></i></span>
        </form>
    </div>
-   <table class="liste-utilisateur">
+   <table cellspacing="0" class="liste-utilisateur">
        <tr>
            <th>Identifiant</th>
            <th>Fonction</th>

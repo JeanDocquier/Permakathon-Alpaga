@@ -1,14 +1,26 @@
+/*** 
+
+CREATION TABLEAU 
+
+***/
+
+var donnee_tableau = document.querySelectorAll('.donnee-chiffree');
+//console.log(donnee_tableau);
+for (var i = 0; i < donnee_tableau.length; i++) {
+    donnee_tableau[i].addEventListener("change", function () {
+        
+    });
+}
+
+/*** 
+
+CREATION GRAPHIQUES 
+
+***/
+
 var couleursgraph = ['#6464ff', '#6fd060', '#EBC65D', '#FF8882', '#886BE8', '#75FFEC']
 
 var moistableau = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"];
-//function getJSONAnnee(annee, categorie){
-//    return data;
-//}
-//
-//function getJSONMois(annee, mois, categorie){
-//    return data
-//}
-//var creationlabel = data[0].janvier
 var ctx = document.getElementById('graphique-annuel').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -161,7 +173,7 @@ function getGraph() {
     formData.set('mois', moisselect); // Si query == 'priceRange', il faut aussi min (Number) et max (Number)
     formData.set('categorie', categorieselect); // Si category == 'priceRange', il faut aussi category (CD | BOOK | GAME)
     console.log(formData);
-    let urlAPI = './api.php';
+    let urlAPI = './jsonproduction.json';
     let xhr = new XMLHttpRequest();
 
     xhr.addEventListener('readystatechange', function (e) {
@@ -182,3 +194,6 @@ function getGraph() {
     xhr.open('POST', urlAPI, true);
     xhr.send(formData);
 }
+
+
+

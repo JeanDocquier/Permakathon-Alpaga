@@ -28,7 +28,7 @@ a {
 }
 
 section:not(#identification) {
-  margin-left: 15%;
+  margin-left: 17%;
   width: 85%;
   padding-left: 50px;
 }
@@ -58,12 +58,19 @@ nav {
   position: fixed;
   left: 0;
   top: 0;
-  width: 15%;
+  width: 17%;
   background-color: #d8ccaf;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+nav i {
+  margin-right: 10px;
+}
+nav a:not(.logo) {
+  margin-bottom: 10px;
+  width: 200px;
 }
 nav img {
   margin-top: 50px;
@@ -192,10 +199,14 @@ canvas {
   width: 200px;
   padding: 10px 10px;
   text-align: left;
+  border-left: 0px;
 }
 .liste-utilisateur td,
 .liste-utilisateur th {
   border: 1px solid black;
+}
+.liste-utilisateur td {
+  border-top: 0px;
 }
 
 .ajout-utilisateur {
@@ -203,6 +214,9 @@ canvas {
   font-size: 24px;
   display: none;
   margin-top: -15px;
+}
+.ajout-utilisateur input, .ajout-utilisateur select {
+  margin-right: 15px;
 }
 .ajout-utilisateur i {
   color: #673b2c;
@@ -230,11 +244,12 @@ canvas {
   color: #f1ebdd;
 }
 .ajout-utilisateur.active {
-  display: block;
+  display: flex;
 }
 
 .fermeture-ajout-utilisateur {
   cursor: pointer;
+  align-self: center;
 }
 
 .rajouter-employe {
