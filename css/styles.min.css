@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15;
@@ -214,7 +215,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #d8ccaf;
+  background-color: #f1ebdd;
 }
 
 a {
@@ -223,7 +224,7 @@ a {
   color: #303030;
 }
 
-section {
+section:not(#identification) {
   margin-left: 300px;
   width: 100%;
   padding: 150px;
@@ -260,9 +261,10 @@ nav div {
   align-items: center;
 }
 #identification img {
-  align-self: flex-start;
+  align-self: center;
 }
 #identification form {
+  align-self: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -302,4 +304,27 @@ ul {
 }
 .le-tableau td {
   padding: 15px;
+}
+
+.graphique-annuel {
+  max-width: 1200px;
+}
+
+#canvas {
+  width: 400px;
+}
+
+input {
+  /* Firefox */
+  -moz-appearance: textfield;
+  /* Chrome */
+  /* Opéra*/
+}
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input::-o-inner-spin-button {
+  -o-appearance: none;
+  margin: 0;
 }

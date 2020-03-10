@@ -10,14 +10,14 @@
     <?php include('menu.php') ?>
     <section id="tableau">
         <div class="selection-tableau">
-            <select name="annee-tableau" id="annee-tableau">
+            <select class="graph-selecteur" name="annee-tableau" id="annee-tableau">
                 <!-- INSERT OPTION EN FONCTION DE DB -->
-                <option value="2019">2019</option>
+                <option selected="selected" value="2019">2019</option>
                 <option value="2018">2018</option>
             </select>
-            <select name="categorie" id="categorie">
+            <select class="graph-selecteur" name="categorie-tableau" id="categorie-tableau">
                 <!-- INSERT OPTION EN FONCTION DE DB -->
-                <option value="financiers">Financier</option>
+                <option selected="selected" value="financiers">Financier</option>
                 <option value="Vente">Vente</option>
             </select>
         </div>
@@ -27,9 +27,8 @@
                 for ($i=0 ; $i < 3 ; $i++){
                     echo '<tr class="nom-class">';
                         for ($j=0 ; $j < 12 ; $j++){
-                            echo '<td class>31€</td>';
+                            echo '<td class><input type="number" value="31"></td>';
                         }
-                    
                     echo '</tr>';
                 }
                 
@@ -39,50 +38,28 @@
         </div>
     </section>
     <section id="graphiques">
-        <div class="graphique-annuel">
+        <div id="graphique-annuel" class="graphique-annuel">
             **INSERT GRAPHIQUE GRAPH.JS**
+
             <canvas id="myChart">
 
             </canvas>
+
+
         </div>
-        <div class="graphique-mensuel">
-            <select name="mois-graphique" id="mois-graphique">
+        <div id="graphique-mensuel" class="graphique-mensuel">
+            <select class="graph-selecteur" name="mois-graphique" id="mois-graphique">
                 <!-- INSERT OPTION EN FONCTION DE DB -->
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
+                <option selected="selected" value="Janvier">Janvier</option>
+                <option value="Février">Février</option>
             </select>
             **INSERT GRAPHIQUE GRAPH.JS**
 
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
-
-            // The data for our dataset
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                    label: 'My First dataset',
-                    fill : 2,
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45]
-                }]
-            },
-
-            // Configuration options go here
-            options: {}
-        });
-
-    </script>
-
+    <script src="js/mygraph.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="js/custom.min.js"></script>
 </body>
 
 </html>

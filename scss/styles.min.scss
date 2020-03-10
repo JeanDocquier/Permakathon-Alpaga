@@ -227,8 +227,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background-color: $beigefonce;
+    background-color: $beigeclair;
 }
 
 a {
@@ -237,7 +236,7 @@ a {
     color: $grisfonce;
 }
 
-section {
+section:not(#identification){
     margin-left: 300px;
     width: 100%;
     padding: 150px;
@@ -277,10 +276,11 @@ nav {
     align-items: center;
 
     img {
-        align-self: flex-start;
+        align-self: center;
     }
 
     form {
+        align-self: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -326,4 +326,27 @@ ul {
     td{
         padding: 15px;
     }
+}
+.graphique-annuel{
+    max-width: 1200px;
+}
+#canvas{
+    width: 400px;
+}
+
+input{
+	/* Firefox */
+	-moz-appearance: textfield;
+
+	/* Chrome */
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin:0;
+	}
+
+	/* Opéra*/
+	&::-o-inner-spin-button {
+		-o-appearance: none;
+		margin: 0; 
+	}
 }
