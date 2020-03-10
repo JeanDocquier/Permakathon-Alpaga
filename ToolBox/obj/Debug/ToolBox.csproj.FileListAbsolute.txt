@@ -1,0 +1,5 @@
+C:\Users\dotnet\Source\Repos\Permakathon-Alpaga\ToolBox\bin\Debug\ToolBox.dll
+C:\Users\dotnet\Source\Repos\Permakathon-Alpaga\ToolBox\bin\Debug\ToolBox.pdb
+C:\Users\dotnet\Source\Repos\Permakathon-Alpaga\ToolBox\obj\Debug\ToolBox.csprojAssemblyReference.cache
+C:\Users\dotnet\Source\Repos\Permakathon-Alpaga\ToolBox\obj\Debug\ToolBox.dll
+C:\Users\dotnet\Source\Repos\Permakathon-Alpaga\ToolBox\obj\Debug\ToolBox.pdb
