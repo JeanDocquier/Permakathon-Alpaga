@@ -53,13 +53,16 @@
     <Compile Include="Models\Formation.cs" />
     <Compile Include="Models\Objectifs.cs" />
     <Compile Include="Models\Offre.cs" />
-    <Compile Include="Models\ParmaFungi.cs" />
-    <Compile Include="Models\PartenaireOuClient.cs" />
+    <Compile Include="Models\PermaFungiClass.cs" />
+    <Compile Include="Models\PartenaireClient.cs" />
     <Compile Include="Models\Produit.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vends.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\ObjectifsRepository.cs" />
+    <Compile Include="Repositories\PartenaireOuClientRepository.cs" />
+    <Compile Include="Repositories\PermaFungiRepository.cs" />
     <Compile Include="Repositories\ProduitRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>

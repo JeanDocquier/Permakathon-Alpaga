@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PermaFungi.DAL.Models
 {
-    public class ParmaFungi : IEntity<int>
+    public class PermaFungiClass : IEntity<int>
     {
         private int _idPermafungi;
         private string _ville;

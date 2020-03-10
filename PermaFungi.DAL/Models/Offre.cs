@@ -10,17 +10,17 @@ namespace PermaFungi.DAL.Models
 {
     public class Offre : IEntity<CompositeKey<int, int>>
     {
-        private int _idPartenaireClient;
+        private int _idPermaFungi;
         private int _idFormation;
 
-        public int IdPartenaireClient { get => _idPartenaireClient; set => _idPartenaireClient = value; }
+        public int IdPermaFungi { get => _idPermaFungi; set => _idPermaFungi = value; }
         public int IdFormation { get => _idFormation; set => _idFormation = value; }
 
         public CompositeKey<int, int> Id
         {
             get
             {
-                return new CompositeKey<int, int>() { PK1 = IdPartenaireClient, PK2 = IdFormation };
+                return new CompositeKey<int, int>() { PK1 = IdPermaFungi, PK2 = IdFormation };
             }
         }
 
