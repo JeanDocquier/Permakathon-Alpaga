@@ -12,5 +12,6 @@ namespace PermaFungiApp.Models
         public int quantite;
         public double prix;
         public string description;
+        public DateTime date;
     }
 }
