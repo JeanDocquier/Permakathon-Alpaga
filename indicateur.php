@@ -46,7 +46,7 @@
 
                 </canvas>
 
-
+ 
             </div>
             <div class="graphique-mensuel">
                 <select class="graph-selecteur" name="mois-graphique" id="mois-graphique">

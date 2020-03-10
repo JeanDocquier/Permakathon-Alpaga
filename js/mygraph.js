@@ -170,7 +170,7 @@ function createGraph(place_graph, type_graph, dataJSON) {
 
 //ON VA AFFICHER AFFICHER LE GRAPH CREE EN
 function getGraph() {
-
+ 
     var anneeselect = document.querySelector('#annee-tableau').value;
     console.log(anneeselect);
     var categorieselect = document.querySelector('#categorie-tableau').value;
