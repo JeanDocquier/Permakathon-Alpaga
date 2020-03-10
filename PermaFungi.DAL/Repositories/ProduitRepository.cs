@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PermaFungi.DAL.Repositories
 {
-    class ProduitRepository : BaseRepository<Produit, int>
+    public class ProduitRepository : BaseRepository<Produit, int>
     {
         public ProduitRepository(string Cnstr) : base(Cnstr)
         {
