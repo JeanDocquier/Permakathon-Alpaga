@@ -22,5 +22,14 @@ namespace PermaFungiApp.Controllers
             var result = Cxt.Insert(prod).ToTransferObject();
             return result;
         }
+
+        [HttpPost]
+        public List<float> ListePrix(string name)
+        {
+            var ProdCxt = new ProduitRepository(connexion);
+            var result = ProdCxt.GetAll().Where(x=>x.NomProduit.Equals(name)).Select(x=>(float)x.Prix).ToList();
+           
+            return result;
+        }
     }
 }
