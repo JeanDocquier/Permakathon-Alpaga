@@ -9,7 +9,7 @@ var moistableau = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juill
 //    return data
 //}
 //var creationlabel = data[0].janvier
-var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById('graphique-annuel').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
@@ -43,8 +43,51 @@ var chart = new Chart(ctx, {
     },
 
     // Configuration options go here
-    options: {}
+    options: {
+    }
 });
+
+
+var ctxtwo = document.getElementById('graphique-mensuel').getContext('2d');
+var charttwo = new Chart(ctxtwo, {
+    // The type of chart we want to create
+    type: 'bar',
+    // The data for our dataset
+    data: {
+        labels: ['January'],
+        datasets: 
+        [
+            {
+                label: 'My First dataset',
+                fill: false,
+                backgroundColor: couleursgraph[0],
+                borderColor: couleursgraph[0],
+                data: [1],
+            },
+            {
+                label: 'My Second dataset',
+                fill: false,
+                backgroundColor: couleursgraph[1],
+                borderColor: couleursgraph[1],
+                data: [10],
+            },
+            {
+                label: 'My Third dataset',
+                fill: false,
+                backgroundColor: couleursgraph[3],
+                borderColor: couleursgraph[3],
+                data: [15],
+            }
+        ]
+    },
+
+    // Configuration options go here
+    options: {
+    }
+});
+
+
+
 
 var graphselecteur = document.querySelectorAll('.graph-selecteur');
 
