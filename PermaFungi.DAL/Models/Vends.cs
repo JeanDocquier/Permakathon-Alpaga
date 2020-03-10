@@ -12,6 +12,7 @@ namespace PermaFungi.DAL.Models
     {
         private int _idProduit;
         private int _idPermafungi;
+        private DateTime _dateVente;
 
         public int IdProduit { get => _idProduit; set => _idProduit = value; }
         public int IdPermaFungi { get => _idPermafungi; set => _idPermafungi = value; }
@@ -24,5 +25,6 @@ namespace PermaFungi.DAL.Models
             }
         }
 
+        public DateTime DateVente { get => _dateVente; set => _dateVente = value; }
     }
 }

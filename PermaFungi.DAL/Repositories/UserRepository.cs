@@ -80,6 +80,7 @@ namespace PermaFungi.DAL.Repositories
             p["Role"] = toInsert.Role;
             p["MotDePasse"] = toInsert.HashMDP;
             p["Adresse"] = toInsert.Adresse;
+            p["IdPermaFungi"] = toInsert.IdPermaFungi;
             return p;
         }
 
@@ -94,7 +95,7 @@ namespace PermaFungi.DAL.Repositories
                 Email = arg["email"].ToString(),
                 Role = arg["role"].ToString(),
                 Adresse = arg["adresse"].ToString(),
-                
+                IdPermaFungi = (int)arg["IdPermaFungi"],
                 //WE CAN'T STORE PASSWORD FROM DB
                 // MotDePasse= arg["MotDePasse"].ToString()
             };

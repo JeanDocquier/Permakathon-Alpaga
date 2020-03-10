@@ -12,7 +12,7 @@ namespace PermaFungi.DAL.Models
     {
         private int _idMachine;
         private int _idConsommation;
-
+        private DateTime _dateConsomme;
         public int IdMachine { get => _idMachine; set => _idMachine= value; }
         public int IdConsommation { get => _idConsommation; set => _idConsommation = value; }
 
@@ -24,6 +24,7 @@ namespace PermaFungi.DAL.Models
             }
         }
 
+        public DateTime DateConsomme { get => _dateConsomme; set => _dateConsomme = value; }
     }
 }
 }

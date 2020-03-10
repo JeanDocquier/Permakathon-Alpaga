@@ -60,11 +60,13 @@
     <Compile Include="Models\Vends.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\ConsommeRepository.cs" />
     <Compile Include="Repositories\ObjectifsRepository.cs" />
     <Compile Include="Repositories\PartenaireOuClientRepository.cs" />
     <Compile Include="Repositories\PermaFungiRepository.cs" />
     <Compile Include="Repositories\ProduitRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\VendsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToolBox\ToolBox.csproj">
