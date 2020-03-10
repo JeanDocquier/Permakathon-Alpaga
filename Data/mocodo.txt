@@ -1,0 +1,26 @@
+donner, 0n user, 1n formation
+formation idFormation, nom, quantite, prix
+avoir, 11 formation, 1n objectif
+objectif idObjectif, prevision, date
+respecter, 11 consomation, 1n objectif
+
+
+user idUser, nom, prenom, email, motDePasse, role, adresse
+offre, 1n partenaireClient, 1n formation
+partenaireClient idPartenaireClient, nom, adresse, email
+achete, 0n partenaireClient, 0n produit
+dois attendre, 11 produit, 1n objectif
+consomation idConsomation, typeConsomation, prixConsomation
+
+a, 0n user, 11 dataWork
+travaille, 1n permafungi, 11 user
+collabore, 1n partenaireClient, 1n permafungi
+vends, 1n permafungi, 1n produit
+produit idProduit, nom, quantite,prix
+consomme, 0n machine, 0n consomation
+
+dataWork idDataWork, jourAbsence, typeContrat, salaireBrut
+
+permafungi idPermafungi, ville, adresse, contact, email
+possede, 1n permafungi, 11 machine
+machine idMachine, numeroSerie
