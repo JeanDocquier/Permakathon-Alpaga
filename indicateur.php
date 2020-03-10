@@ -41,7 +41,7 @@
     <section id="graphiques">
         <h2>Graphiques</h2>
         <div class="wrapper-graphiques">
-            <div class="graphique-annuel">
+            <div class="graphique-annuel"> 
                 <canvas style="height:400px; width:100%" id="graphique-annuel">
 
                 </canvas>

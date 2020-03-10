@@ -128,7 +128,7 @@ for (var i = 0; i < graphselecteur.length; i++) {
 
 //ON VA CREER L'OBJET QUI SERA UTILISE POUR CREER LES DATASETS COMPOSANT LES GRAPHS
 // --> RETOURNE UN OBJET 
-function aDataSet(mylabel, myColor, mydata_numbers) {
+function aDataSet(mylabel, myColor, mydata_numbers) { 
     var dataset = { //PARAMETRES DE L'OBJET
         label: mylabel,
         fill: false,
