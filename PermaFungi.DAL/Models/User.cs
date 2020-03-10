@@ -18,7 +18,7 @@ namespace PermaFungi.DAL.Models
         private string _role;
         private string _adresse;
         private string _telephone;
-
+        private int _idPermaFungi;
         public int IdUser 
         {
             get
@@ -145,6 +145,6 @@ namespace PermaFungi.DAL.Models
             }
         }
 
-
+        public int IdPermaFungi { get => _idPermaFungi; set => _idPermaFungi = value; }
     }
 }

@@ -14,7 +14,7 @@ namespace PermaFungiApp.Controllers
 {
     public class UsersController : ApiController
     {
-        private string connexion = "Persist Security Info=False;User ID=AlpagaUser;Password=AlpagaUser;Initial Catalog=Alpaga;Server=192.168.0.100\\HACKATHON";
+        private string connexion = "@Data Source=HACKATHON-SRV1\\HACKATHON;User ID=AlpagaUser;Password=AlpagaUser;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         [HttpPost]
         public UserTO Login(string login, string password) {
             User utilisateur = new User() { Email=login, MotDePasse=password};
