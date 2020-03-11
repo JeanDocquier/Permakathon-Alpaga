@@ -1,0 +1,336 @@
+@charset "UTF-8";
+/** PERMAFUNGI **/
+/** VARIABLES COULEUR **/
+/** GLOBAL **/
+body {
+  font-family: "Source Sans Pro", "sans serif";
+  width: 100%;
+  height: 100vh;
+  background-color: #f1ebdd;
+}
+
+h2 {
+  color: #303030;
+  font-weight: 600;
+}
+
+.body-index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1ebdd;
+}
+.body-index select {
+  width: 100%;
+}
+.body-index form input, .body-index form select {
+  margin-bottom: 25px;
+}
+
+a {
+  text-decoration: none;
+  font-family: "Source Sans Pro", "sans serif";
+  color: #303030;
+}
+
+section:not(#identification) {
+  margin-left: 17%;
+  width: 85%;
+  padding-left: 50px;
+}
+
+select,
+.btn, .btn-research {
+  background-color: rgba(255, 0, 0, 0);
+  padding: 5px;
+  height: 50px;
+  width: 150px;
+  color: #673b2c;
+  border: 3px solid #673b2c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  color: #f1ebdd;
+  background-color: #673b2c;
+}
+
+/** NAV **/
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 17%;
+  background-color: #d8ccaf;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav i {
+  margin-right: 10px;
+}
+nav a:not(.logo) {
+  margin-bottom: 10px;
+  width: 200px;
+}
+nav img {
+  margin-top: 50px;
+}
+nav div {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  margin-bottom: 50px;
+  font-size: 18px;
+}
+
+/** IDENTIFICATION **/
+#identification {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#identification img {
+  align-self: center;
+}
+#identification form {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#identification form input {
+  padding: 5px;
+}
+#identification form input[type=submit] {
+  background-color: #673b2c;
+  border: 0px;
+  padding: 10px;
+  color: white;
+}
+
+/** UTILISATEUR **/
+#utilisateur {
+  height: 100%;
+}
+
+hr {
+  width: 500px;
+  margin-left: 0;
+  margin-bottom: 20px;
+  border: 5px solid #673b2c;
+}
+
+h2 {
+  font-size: 62px;
+  font-family: "Source Sans Pro";
+}
+
+p,
+ul {
+  font-size: 24px;
+}
+p li,
+ul li {
+  margin-top: 15px;
+}
+
+/** INDICATEUR **/
+#tableau,
+#graphiques {
+  margin-bottom: 100px;
+}
+
+.le-tableau td {
+  border: 1px solid black;
+}
+.le-tableau td {
+  padding: 15px;
+}
+.le-tableau input {
+  width: 25px;
+  text-align: center;
+  /* Firefox */
+  -moz-appearance: textfield;
+  /* Chrome */
+  /* Opéra*/
+}
+.le-tableau input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.le-tableau input::-o-inner-spin-button {
+  -o-appearance: none;
+  margin: 0;
+}
+
+.selection-tableau {
+  display: flex;
+  width: 350px;
+  justify-content: space-between;
+}
+.selection-tableau select {
+  margin-bottom: 15px;
+}
+
+.wrapper-graphiques {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1400px;
+}
+
+.graphique-annuel {
+  width: 1200px;
+}
+
+.graphique-mensuel {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.graphique-mensuel select {
+  align-self: center;
+  margin-bottom: 15px;
+}
+
+canvas {
+  width: 100%;
+}
+
+/** GESTION UTILISATEUR**/
+.wrapper-top {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+}
+
+.liste-utilisateur tr td:nth-of-type(1),
+.liste-utilisateur tr > th:nth-of-type(1) {
+  width: 300px;
+  padding: 10px 10px;
+  text-align: left;
+}
+.liste-utilisateur tr td:nth-of-type(2),
+.liste-utilisateur tr > th:nth-of-type(2) {
+  width: 200px;
+  padding: 10px 10px;
+  text-align: left;
+  border-left: 0px;
+}
+.liste-utilisateur td,
+.liste-utilisateur th {
+  border: 1px solid black;
+}
+.liste-utilisateur td {
+  border-top: 0px;
+}
+
+.tableau-donnees th {
+  border: 1px solid black;
+}
+.tableau-donnees tr td, .tableau-donnees tr th {
+  padding: 20px;
+}
+.tableau-donnees td {
+  text-align: center;
+  border-top: 0px;
+}
+.tableau-donnees td input {
+  width: 50px;
+}
+
+.ajout-utilisateur {
+  padding: 25px 0px;
+  font-size: 24px;
+  display: none;
+  margin-top: -15px;
+}
+.ajout-utilisateur input, .ajout-utilisateur select {
+  margin-right: 15px;
+}
+.ajout-utilisateur i {
+  color: #673b2c;
+  margin-left: 10px;
+}
+.ajout-utilisateur input:not([type=submit]) {
+  padding: 5px;
+  background-color: rgba(250, 235, 215, 0);
+  border: 0;
+  border-bottom: 3px solid #673b2c;
+}
+.ajout-utilisateur [type=submit] {
+  background-color: rgba(255, 0, 0, 0);
+  padding: 5px;
+  height: 50px;
+  width: 150px;
+  color: #673b2c;
+  border: 3px solid #673b2c;
+  transition: 0.3s ease-in-out;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.ajout-utilisateur [type=submit]:hover {
+  background-color: #673b2c;
+  color: #f1ebdd;
+}
+.ajout-utilisateur.active {
+  display: flex;
+}
+
+.fermeture-ajout-utilisateur {
+  cursor: pointer;
+  align-self: center;
+}
+
+.rajouter-employe {
+  margin-bottom: 15px;
+}
+
+/** TACHES **/
+.action-taches {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 100px;
+}
+
+.btn-research {
+  width: 200px;
+}
+
+h3 {
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.liste-taches {
+  width: 1000px;
+}
+.liste-taches td, .liste-taches th {
+  border: 1px solid black;
+  padding: 20px;
+}
+.liste-taches .execution {
+  text-align: center;
+}
+
+/** REGION **/
+.changer-region {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  justify-content: space-between;
+  width: 150px;
+}
+.changer-region input[type=submit] {
+  padding: 15px;
+  background-color: #673b2c;
+  border: 0px;
+  color: white;
+}

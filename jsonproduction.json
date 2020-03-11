@@ -1,0 +1,20 @@
+{
+    "categorie": {
+        "ventes": [
+            {
+                "Mois": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+                "Marc collecté": [314, 190, 269, 330, 208, 120, 141, 520, 310, 521, 239, 208],
+                "Kit": [240, 190, 269, 303, 248, 128, 412, 310, 410, 251, 231, 248],
+                "fungipop": [2400, 1900, 2619, 3030, 2048, 1280, 0, 0, 0, 2521, 2391, 2048]
+                }
+        ],
+        "production": [
+            {
+                "Mois": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+                "Total récolte pleurottes en kg": [829, 6281, 9124, 1072, 7125, 4246, 0, 3240, 1230, 8821, 8234, 2715],
+                "Total récolte pieds en kg": [4129, 3420, 2457, 2536, 3257, 12876, 2987, 2876, 2654, 2876, 12298, 4312],
+                "Total récolte panicaults en kg": [393, 3145, 3731, 3299, 3164, 2759, 455, 3625, 3566, 3895, 4124, 4373]
+                }
+        ]
+    }
+}
