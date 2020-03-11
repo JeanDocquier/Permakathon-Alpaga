@@ -15,27 +15,76 @@ namespace PermaFungiApp.Controllers
     public class UsersController : ApiController
     {
         private string connexion = "Persist Security Info=False;User ID=AlpagaUser;Password=AlpagaUser;Initial Catalog=Alpaga;Server=192.168.0.100\\HACKATHON";
-        [HttpPost]
-        public UserTO Login(string login, string password) {
-            User utilisateur = new User() { Email=login, MotDePasse=password};
-            UserTO user = new UserRepository(connexion).VerifLogin(utilisateur).ToTransferObject();
-            return user;
-        }
-        [HttpPost]
-        public UserTO Ajouter(string nom, string prenom, string email, string motDePasse, string telephone, string role)
+
+        public HttpResponseMessage Get()
         {
-            User utilisateur = new User()
-            {
-                Nom = nom,
-                Prenom = prenom,
-                Email = email,
-                MotDePasse = motDePasse,
-                Telephone = telephone,
-                Role = role
-            };
-            var Cxt = new UserRepository(connexion);
-            var result = Cxt.Insert(utilisateur).ToTransferObject();
-            return result;
+            UserRepository userRepo = new UserRepository(connexion);
+            var user = userRepo.GetAll().ToList();
+            return Request.CreateResponse(HttpStatusCode.OK, user);
         }
+
+        public HttpResponseMessage Get(int id)
+        {
+            UserRepository userRepo = new UserRepository(connexion);
+            var result = userRepo.GetOne(id);
+            if (result != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "User with ID: " + id.ToString() + "not found");
+            }
+        }
+        //create
+        public HttpResponseMessage Post([FromBody] User user)
+        {
+            try
+            {
+                UserRepository userRepo = new UserRepository(connexion);
+                userRepo.Insert(user);
+                return Request.CreateResponse(HttpStatusCode.Created, user);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+        //update
+        public HttpResponseMessage Put([FromBody]User user)
+        {
+            try
+            {
+                UserRepository userRepo = new UserRepository(connexion);
+                if(user == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "User Not Found");
+                }
+                userRepo.Update(user);
+                return Request.CreateResponse(HttpStatusCode.OK, user);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        public HttpResponseMessage delete(int id)
+        {
+            try
+            {
+                UserRepository userRepo = new UserRepository(connexion);
+                var userToDelete = userRepo.GetOne(id);
+                if (userToDelete == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User with ID: " + id.ToString() + "not found");
+                userRepo.Delete(id);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
     }
 }
