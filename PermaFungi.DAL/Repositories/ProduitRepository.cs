@@ -8,22 +8,35 @@ using System.Threading.Tasks;
 
 namespace PermaFungi.DAL.Repositories
 {
-    class ProduitRepository : BaseRepository<Produit, int>
+    public class ProduitRepository : BaseRepository<Produit, int>
     {
         public ProduitRepository(string Cnstr) : base(Cnstr)
         {
             SelectOneCommand = "Select * from Produit where idProduit=@idProduit";
             SelectAllCommand = "Select * from Produit";
-            InsertCommand = @"INSERT INTO  Produit (nomProduit , quantite, prix, description)
-                            OUTPUT inserted.idUser VALUES(@NomProduit, @Quantite, @Prix ,@Description)";
+            InsertCommand = @"INSERT INTO  Produit (nom , quantite, prix, description)
+                            OUTPUT inserted.idProduit VALUES(@NomProduit, @Quantite, @Prix ,@Description)";
             UpdateCommand = @"UPDATE  Produit
-                           SET NomProduit = @NomProduit, Quantite = @Quantite, Prix = @Prix, Description = @description
-                         WHERE IdProduit = @IdProduit;";
-            DeleteCommand = @"Delete from  Produit  WHERE IdProduit = @IdProduit;";
+                           SET nom = @NomProduit, quantite = @Quantite, prix = @Prix, description = @description
+                         WHERE idProduit = @IdProduit;";
+            DeleteCommand = @"Delete from  Produit  WHERE idProduit = @IdProduit;";
         }
 
 
+        public IEnumerable<Produit> GetByDate(DateTime dateDebut, DateTime dateFin, int idPermafungi)
+        {
+            SelectAllCommand = @"SELECT * FROM Vends
+             INNER JOIN PermaFungi ON PermaFungi.idPermaFungi = Vends.idPermaFungi
+             INNER JOIN Produit ON Produit.idProduit = Vends.idPermaFungi
+             where Vends.dateVends Between @dateDebut AND @dateFin
+             AND Vends.idPermaFungi = @idPermafungi;";
+            Dictionary<string, object> QueryParameters = new Dictionary<string, object>();
+            QueryParameters.Add("dateDebut", dateDebut);
+            QueryParameters.Add("dateFin", dateFin);
+            QueryParameters.Add("idPermaFungi ", idPermafungi);
+            return base.getAll(Map, QueryParameters);
 
+        } 
 
 
         public override IEnumerable<Produit> GetAll()
@@ -70,9 +83,9 @@ namespace PermaFungi.DAL.Repositories
             Dictionary<string, object> p = new Dictionary<string, object>();
             p["idProduit"] = toInsert.Id;
             p["NomProduit"] = toInsert.NomProduit;
-            p["Quantite"] = toInsert.Quantite;
-            p["Prix"] = toInsert.Prix;
-            p["Description"] = toInsert.Description;
+            p["quantite"] = toInsert.Quantite;
+            p["prix"] = toInsert.Prix;
+            p["description"] = toInsert.Description;
 
             return p;
         }
@@ -82,9 +95,9 @@ namespace PermaFungi.DAL.Repositories
             return new Produit()
             {
                 IdProduit = (int)arg["idProduit"],
-                NomProduit = arg["NomProduit"].ToString(),
-                Quantite = (int)arg["Quantite"],
-                Prix = (double)arg["Prix"],
+                NomProduit = arg["nom"].ToString(),
+                Quantite = (double)arg["quantite"],
+                Prix = (double)arg["prix"],
                 Description = arg["description"].ToString(),
 
 

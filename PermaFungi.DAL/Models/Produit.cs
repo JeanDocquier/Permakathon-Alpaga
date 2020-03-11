@@ -11,10 +11,10 @@ namespace PermaFungi.DAL.Models
     {
         private int _idProduit;
         private string _nomProduit;
-        private int _quantite;
+        private double _quantite;
         private double _prix;
         private string _description;
-
+        private int _idObjectifs;
         public int IdProduit 
         {
             get
@@ -40,7 +40,7 @@ namespace PermaFungi.DAL.Models
             }
         }
 
-        public int Quantite
+        public double Quantite
         {
             get
             {
@@ -83,6 +83,6 @@ namespace PermaFungi.DAL.Models
         }
         }
 
-     
-}
+        public int IdObjectifs { get => _idObjectifs; set => _idObjectifs = value; }
+    }
 }
