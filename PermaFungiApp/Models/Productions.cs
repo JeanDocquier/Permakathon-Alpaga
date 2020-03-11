@@ -5,8 +5,7 @@ using System.Web;
 
 namespace PermaFungiApp.Models
 {
-
-    public class Production
+    public class Productions
     {
         public string[] Mois = new string[12] { "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre" };
         public double[] Pleurottes = new double[12];

@@ -64,7 +64,7 @@ namespace PermaFungiApp.Controllers.API
                 }
             }
             
-            var productions = new Production();
+            var productions = new Productions();
 
             foreach (var item in venteRepo.GetAll())
             {
@@ -87,7 +87,8 @@ namespace PermaFungiApp.Controllers.API
                         break;
                 }
             }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            var finalResult = new VenteEtProduction() {ventes=ventes,productions=productions };
+            return Request.CreateResponse(HttpStatusCode.OK, finalResult);
         }
         //create
         public HttpResponseMessage Post([FromBody]Produit prod)
