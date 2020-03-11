@@ -27,9 +27,10 @@ namespace PermaFungiApp.Controllers.API
             PermaFungiRepository PFRepo = new PermaFungiRepository(connexion);
             ProduitRepository prodRepo = new ProduitRepository(connexion);
 
+
             var compositKey = new CompositeKey<int,int>();
-            compositKey.PK1 = idPF;
-            compositKey.PK2 = idProd;
+            compositKey.PK1 = PFRepo.GetOne(idPF).Id;
+            compositKey.PK2 = prodRepo.GetOne(idProd).Id;
             var result = VenteRepo.GetOne(compositKey);
             if (result != null)
             {

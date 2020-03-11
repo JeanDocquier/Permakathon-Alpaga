@@ -10,6 +10,8 @@ using PermaFungi.DAL.Repositories;
 
 namespace PermaFungiApp.Controllers.API
 {
+
+
     public class ProduitsController : ApiController
     {
         private string connexion = "Persist Security Info=False;User ID=AlpagaUser;Password=AlpagaUser;Initial Catalog=Alpaga;Server=192.168.0.100\\HACKATHON";
@@ -34,20 +36,60 @@ namespace PermaFungiApp.Controllers.API
                 return Request.CreateResponse(HttpStatusCode.NotFound, "prod with ID: " + id.ToString() + "not found");
             }
         }
-        public HttpResponseMessage Get(DateTime debut, DateTime fin,int idPF)
+        public HttpResponseMessage Get(DateTime debut, DateTime fin, int idPF)
         {
             ProduitRepository ProdRepo = new ProduitRepository(connexion);
-            var ventes = ProdRepo.GetByDate(debut,fin,idPF);
-            if (ventes != null)
+            VendsRepository venteRepo = new VendsRepository(connexion);
+            var result = ProdRepo.GetByDate(debut, fin, idPF);
+            if (result == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound, "prod with ID: " + result.ToString() + "not found");
+
+            var ventes = new Ventes();
+
+            foreach (var item in venteRepo.GetAll())
             {
-                return Request.CreateResponse(HttpStatusCode.OK, ventes);
+                int month = item.DateVente.Month;
+                string prodName = ProdRepo.GetOne(item.IdProduit).NomProduit;
+                double prodPrix = ProdRepo.GetOne(item.IdProduit).Prix;
+                switch (prodName)
+                {
+                    case "Marc": ventes.MarcCollectes[month] += prodPrix;
+                        break;
+                    case "Kit": ventes.Kit[month] += prodPrix;
+                        break;
+                    case "Fungipop": ventes.Fungipop[month] += prodPrix;
+                        break;
+                    default:
+                        break;
+                }
             }
-            else
+            
+            var productions = new Production();
+
+            foreach (var item in venteRepo.GetAll())
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, "prod with ID: " + ventes.ToString() + "not found");
+                int month = item.DateVente.Month;
+                string prodName = ProdRepo.GetOne(item.IdProduit).NomProduit;
+                double prodQuantite = ProdRepo.GetOne(item.IdProduit).Quantite;
+                
+                switch (prodName)
+                {
+                    case "Marc":
+                        productions.Pleurottes[month] += prodQuantite;
+                        break;
+                    case "Kit":
+                        productions.Pieds[month] += prodQuantite;
+                        break;
+                    case "Fungipop":
+                        productions.Panicaults[month] += prodQuantite;
+                        break;
+                    default:
+                        break;
+                }
             }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
-        //create
+
         public HttpResponseMessage Post([FromBody]Produit prod)
         {
             try
@@ -61,7 +103,7 @@ namespace PermaFungiApp.Controllers.API
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
-        //update
+
         public HttpResponseMessage Put([FromBody]Produit prod)
         {
             try
@@ -96,5 +138,12 @@ namespace PermaFungiApp.Controllers.API
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
         }
+
+        
+
+
+
     }
+
+    
 }
