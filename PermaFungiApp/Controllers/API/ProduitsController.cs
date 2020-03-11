@@ -16,15 +16,15 @@ namespace PermaFungiApp.Controllers.API
 
         public HttpResponseMessage Get()
         {
-            ProduitRepository prodRepo = new ProduitRepository(connexion);
-            var prod = prodRepo.GetAll().ToList();
+            ProduitRepository ProdRepo = new ProduitRepository(connexion);
+            var prod = ProdRepo.GetAll().ToList();
             return Request.CreateResponse(HttpStatusCode.OK, prod);
         }
 
         public HttpResponseMessage Get(int id)
         {
-            ProduitRepository prodRepo = new ProduitRepository(connexion);
-            var result = prodRepo.GetOne(id);
+            ProduitRepository ProdRepo = new ProduitRepository(connexion);
+            var result = ProdRepo.GetOne(id);
             if (result != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -34,13 +34,26 @@ namespace PermaFungiApp.Controllers.API
                 return Request.CreateResponse(HttpStatusCode.NotFound, "prod with ID: " + id.ToString() + "not found");
             }
         }
+        public HttpResponseMessage Get(DateTime debut, DateTime fin,int idPF)
+        {
+            ProduitRepository ProdRepo = new ProduitRepository(connexion);
+            var ventes = ProdRepo.GetByDate(debut,fin,idPF);
+            if (ventes != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, ventes);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "prod with ID: " + ventes.ToString() + "not found");
+            }
+        }
         //create
         public HttpResponseMessage Post([FromBody]Produit prod)
         {
             try
             {
-                ProduitRepository prodRepo = new ProduitRepository(connexion);
-                prodRepo.Insert(prod);
+                ProduitRepository ProdRepo = new ProduitRepository(connexion);
+                ProdRepo.Insert(prod);
                 return Request.CreateResponse(HttpStatusCode.Created, prod);
             }
             catch (Exception ex)
@@ -53,12 +66,12 @@ namespace PermaFungiApp.Controllers.API
         {
             try
             {
-                ProduitRepository prodRepo = new ProduitRepository(connexion);
+                ProduitRepository ProdRepo = new ProduitRepository(connexion);
                 if (prod == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound, "prod Not Found");
                 }
-                prodRepo.Update(prod);
+                ProdRepo.Update(prod);
                 return Request.CreateResponse(HttpStatusCode.OK, prod);
             }
             catch (Exception ex)
@@ -71,22 +84,17 @@ namespace PermaFungiApp.Controllers.API
         {
             try
             {
-                ProduitRepository prodRepo = new ProduitRepository(connexion);
-                var prodToDelete = prodRepo.GetOne(id);
+                ProduitRepository ProdRepo = new ProduitRepository(connexion);
+                var prodToDelete = ProdRepo.GetOne(id);
                 if (prodToDelete == null)
                     return Request.CreateErrorResponse(HttpStatusCode.NotFound, "prod with ID: " + id.ToString() + "not found");
-                prodRepo.Delete(id);
+                ProdRepo.Delete(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
-        }
-
-        public HttpResponseMessage GetDiagram()
-        {
-            throw new NotImplementedException();
         }
     }
 }

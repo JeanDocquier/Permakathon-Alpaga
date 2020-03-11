@@ -18,15 +18,15 @@ namespace PermaFungiApp.Controllers.API
 
         public HttpResponseMessage Get()
         {
-            UserRepository userRepo = new UserRepository(connexion);
-            var user = userRepo.GetAll().ToList();
+            UserRepository UserRepo = new UserRepository(connexion);
+            var user = UserRepo.GetAll().ToList();
             return Request.CreateResponse(HttpStatusCode.OK, user);
         }
 
         public HttpResponseMessage Get(int id)
         {
-            UserRepository userRepo = new UserRepository(connexion);
-            var result = userRepo.GetOne(id);
+            UserRepository UserRepo = new UserRepository(connexion);
+            var result = UserRepo.GetOne(id);
             if (result != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -41,8 +41,8 @@ namespace PermaFungiApp.Controllers.API
         {
             try
             {
-                UserRepository userRepo = new UserRepository(connexion);
-                userRepo.Insert(user);
+                UserRepository UserRepo = new UserRepository(connexion);
+                UserRepo.Insert(user);
                 return Request.CreateResponse(HttpStatusCode.Created, user);
             }
             catch (Exception ex)
@@ -55,12 +55,12 @@ namespace PermaFungiApp.Controllers.API
         {
             try
             {
-                UserRepository userRepo = new UserRepository(connexion);
+                UserRepository UserRepo = new UserRepository(connexion);
                 if(user == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound, "User Not Found");
                 }
-                userRepo.Update(user);
+                UserRepo.Update(user);
                 return Request.CreateResponse(HttpStatusCode.OK, user);
             }
             catch (Exception ex)
@@ -73,11 +73,11 @@ namespace PermaFungiApp.Controllers.API
         {
             try
             {
-                UserRepository userRepo = new UserRepository(connexion);
-                var userToDelete = userRepo.GetOne(id);
+                UserRepository UserRepo = new UserRepository(connexion);
+                var userToDelete = UserRepo.GetOne(id);
                 if (userToDelete == null)
                     return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User with ID: " + id.ToString() + "not found");
-                userRepo.Delete(id);
+                UserRepo.Delete(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -85,6 +85,5 @@ namespace PermaFungiApp.Controllers.API
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
         }
-
     }
 }
