@@ -138,11 +138,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Production.cs" />
+    <Compile Include="Models\Productions.cs" />
     <Compile Include="Models\ProduitExtension.cs" />
     <Compile Include="Models\ProduitTO.cs" />
     <Compile Include="Models\UserExtension.cs" />
     <Compile Include="Models\UserTO.cs" />
+    <Compile Include="Models\VenteEtProduction.cs" />
     <Compile Include="Models\Ventes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
