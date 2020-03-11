@@ -6,7 +6,7 @@
         "Kit": [2400, 1900, 2619, 3030, 2048, 1280, 0, 0, 0, 2521, 2391, 2048],
         "fungipop": [2400, 1900, 2619, 3030, 2048, 1280, 0, 0, 0, 2521, 2391, 2048]
     }
-"categorie" : "resulat"
+"categorie" : "resultat"
     {
     "Mois": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
     "Total récolte pleurottes en kg": [839, 681, 914, 1072, 715, 446, 0, 0, 0, 881, 834, 715],
