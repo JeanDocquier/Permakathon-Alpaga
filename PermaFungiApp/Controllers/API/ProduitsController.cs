@@ -84,9 +84,9 @@ namespace PermaFungiApp.Controllers.API
             }
         }
 
-        public HttpResponseMessage GetDiagram()
-        {
-            throw new NotImplementedException();
-        }
+        //public HttpResponseMessage GetDiagram()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

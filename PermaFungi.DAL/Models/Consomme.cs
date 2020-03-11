@@ -27,4 +27,4 @@ namespace PermaFungi.DAL.Models
         public DateTime DateConsomme { get => _dateConsomme; set => _dateConsomme = value; }
     }
 }
-}
+

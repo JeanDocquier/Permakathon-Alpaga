@@ -82,10 +82,10 @@ namespace PermaFungi.DAL.Repositories
         {
             Dictionary<string, object> p = new Dictionary<string, object>();
             p["idProduit"] = toInsert.Id;
-            p["NomProduit"] = toInsert.NomProduit;
-            p["Quantite"] = toInsert.Quantite;
-            p["Prix"] = toInsert.Prix;
-            p["Description"] = toInsert.Description;
+            p["nom"] = toInsert.NomProduit;
+            p["quantite"] = toInsert.Quantite;
+            p["prix"] = toInsert.Prix;
+            p["description"] = toInsert.Description;
 
             return p;
         }
@@ -95,9 +95,9 @@ namespace PermaFungi.DAL.Repositories
             return new Produit()
             {
                 IdProduit = (int)arg["idProduit"],
-                NomProduit = arg["NomProduit"].ToString(),
-                Quantite = (int)arg["Quantite"],
-                Prix = (double)arg["Prix"],
+                NomProduit = arg["nom"].ToString(),
+                Quantite = (double)arg["quantite"],
+                Prix = (double)arg["prix"],
                 Description = arg["description"].ToString(),
 
 

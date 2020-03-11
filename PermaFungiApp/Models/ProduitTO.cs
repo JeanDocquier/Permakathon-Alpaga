@@ -9,7 +9,7 @@ namespace PermaFungiApp.Models
     {
         public int idProduit;
         public string nomProduit;
-        public float quantite;
+        public double quantite;
         public double prix;
         public string description;
         public DateTime date;

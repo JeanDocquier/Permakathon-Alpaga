@@ -27,7 +27,7 @@ namespace PermaFungiApp.Models
                 IdProduit = produit.idProduit,
                 NomProduit = produit.nomProduit,
                 Quantite = produit.quantite,
-                Prix = produit.prix,
+                Prix = (float)produit.prix,
                 Description = produit.description,
             };
         }

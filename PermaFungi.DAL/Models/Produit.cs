@@ -11,7 +11,7 @@ namespace PermaFungi.DAL.Models
     {
         private int _idProduit;
         private string _nomProduit;
-        private float _quantite;
+        private double _quantite;
         private double _prix;
         private string _description;
         private int _idObjectifs;
@@ -40,7 +40,7 @@ namespace PermaFungi.DAL.Models
             }
         }
 
-        public float Quantite
+        public double Quantite
         {
             get
             {
