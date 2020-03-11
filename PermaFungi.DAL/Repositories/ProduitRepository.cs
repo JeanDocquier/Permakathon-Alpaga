@@ -15,11 +15,11 @@ namespace PermaFungi.DAL.Repositories
             SelectOneCommand = "Select * from Produit where idProduit=@idProduit";
             SelectAllCommand = "Select * from Produit";
             InsertCommand = @"INSERT INTO  Produit (nomProduit , quantite, prix, description)
-                            OUTPUT inserted.idUser VALUES(@NomProduit, @Quantite, @Prix ,@Description)";
+                            OUTPUT inserted.idProduit VALUES(@NomProduit, @Quantite, @Prix ,@Description)";
             UpdateCommand = @"UPDATE  Produit
-                           SET NomProduit = @NomProduit, Quantite = @Quantite, Prix = @Prix, Description = @description
-                         WHERE IdProduit = @IdProduit;";
-            DeleteCommand = @"Delete from  Produit  WHERE IdProduit = @IdProduit;";
+                           SET nomProduit = @NomProduit, quantite = @Quantite, prix = @Prix, description = @description
+                         WHERE idProduit = @IdProduit;";
+            DeleteCommand = @"Delete from  Produit  WHERE idProduit = @IdProduit;";
         }
 
 

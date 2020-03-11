@@ -12,20 +12,20 @@ namespace PermaFungi.DAL.Repositories
     {
         public UserRepository(string Cnstr) : base(Cnstr)
         {
-            SelectOneCommand = "Select * from User where idUser=@idUser";
-            SelectAllCommand = "Select * from User";
-            InsertCommand = @"INSERT INTO  User (Nom ,Prenom , adresse, telephone , role, Email ,motDePasse)
-                            OUTPUT inserted.idUser VALUES(@Nom, @Prenom, @Adresse ,@Telephone ,@Role, @Email ,@MotDePasse)";
-            UpdateCommand = @"UPDATE  User
-                           SET Nom = @Nom,  Prenom = @Prenom,  Adresse= @Adresse, Telephone =@Telephone, Role =@Role , Email = @Email,  MotDePasse = @MotDePasse
-                         WHERE IdUser = @IdUser;";
-            DeleteCommand = @"Delete from  User  WHERE IdUser = @IdUser;";
+            SelectOneCommand = "Select * from [User] where idUser=@idUser";
+            SelectAllCommand = "Select * from [User]";
+            InsertCommand = @"INSERT INTO  [User] (nom ,prenom , adresse, telephone , role, email ,motdepasse, idPermafungi)
+                            OUTPUT inserted.idUser VALUES(@Nom, @Prenom, @Adresse ,@Telephone ,@Role, @Email ,@MotDePasse, @IdPermaFungi)";
+            UpdateCommand = @"UPDATE  [User]
+                           SET nom = @Nom,  prenom = @Prenom,  adresse= @Adresse, telephone =@Telephone, role =@Role , email = @Email,  motdepasse = @MotDePasse
+                         WHERE idUser = @IdUser;";
+            DeleteCommand = @"Delete from  [User]  WHERE idUser = @IdUser;";
         }
 
 
         public User VerifLogin(User user)
         {
-            SelectOneCommand = "Select * from Membre where Email=@Email and Password=@Passeword";
+            SelectOneCommand = "Select * from Membre where email=@Email and motdepasse=@Password";
             return base.getOne(Map, MapToDico(user));
         }
 
@@ -73,13 +73,14 @@ namespace PermaFungi.DAL.Repositories
         {
             Dictionary<string, object> p = new Dictionary<string, object>();
             p["idUser"] = toInsert.Id;
-            p["Nom"] = toInsert.Nom;
-            p["Prenom"] = toInsert.Prenom;
-            p["Telephone"] = toInsert.Telephone;
-            p["Email"] = toInsert.Email;
-            p["Role"] = toInsert.Role;
-            p["MotDePasse"] = toInsert.HashMDP;
-            p["Adresse"] = toInsert.Adresse;
+            p["nom"] = toInsert.Nom;
+            p["prenom"] = toInsert.Prenom;
+            p["telephone"] = toInsert.Telephone;
+            p["email"] = toInsert.Email;
+            p["role"] = toInsert.Role;
+            p["motdepasse"] = toInsert.HashMDP;
+            p["adresse"] = toInsert.Adresse;
+            p["idPermafungi"] = toInsert.IdPermaFungi;
             return p;
         }
 
@@ -94,7 +95,7 @@ namespace PermaFungi.DAL.Repositories
                 Email = arg["email"].ToString(),
                 Role = arg["role"].ToString(),
                 Adresse = arg["adresse"].ToString(),
-                
+                IdPermaFungi = (int)arg["idPermaFungi"],
                 //WE CAN'T STORE PASSWORD FROM DB
                 // MotDePasse= arg["MotDePasse"].ToString()
             };
