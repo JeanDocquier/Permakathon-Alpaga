@@ -10,7 +10,7 @@ using PermaFungi.DAL;
 using PermaFungi.DAL.Repositories;
 using PermaFungi.DAL.Models;
 
-namespace PermaFungiApp.Controllers
+namespace PermaFungiApp.Controllers.API
 {
     public class UsersController : ApiController
     {

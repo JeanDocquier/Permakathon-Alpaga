@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 using PermaFungi.DAL.Repositories;
 
-namespace PermaFungiApp.Controllers
+namespace PermaFungiApp.Controllers.API
 {
     public class ProduitsController : ApiController
     {
@@ -82,6 +82,11 @@ namespace PermaFungiApp.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
             }
+        }
+
+        public HttpResponseMessage GetDiagram()
+        {
+            throw new NotImplementedException();
         }
     }
 }
