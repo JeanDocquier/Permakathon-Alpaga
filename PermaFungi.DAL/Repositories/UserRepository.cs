@@ -73,6 +73,7 @@ namespace PermaFungi.DAL.Repositories
         {
             Dictionary<string, object> p = new Dictionary<string, object>();
             p["idUser"] = toInsert.Id;
+
             p["nom"] = toInsert.Nom;
             p["prenom"] = toInsert.Prenom;
             p["telephone"] = toInsert.Telephone;
@@ -81,6 +82,7 @@ namespace PermaFungi.DAL.Repositories
             p["motdepasse"] = toInsert.HashMDP;
             p["adresse"] = toInsert.Adresse;
             p["idPermafungi"] = toInsert.IdPermaFungi;
+
             return p;
         }
 
@@ -96,6 +98,7 @@ namespace PermaFungi.DAL.Repositories
                 Role = arg["role"].ToString(),
                 Adresse = arg["adresse"].ToString(),
                 IdPermaFungi = (int)arg["idPermaFungi"],
+
                 //WE CAN'T STORE PASSWORD FROM DB
                 // MotDePasse= arg["MotDePasse"].ToString()
             };
