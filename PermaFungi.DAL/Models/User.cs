@@ -19,6 +19,7 @@ namespace PermaFungi.DAL.Models
         private string _adresse;
         private string _telephone;
         private int _idPermaFungi;
+
         public int IdUser 
         {
             get
