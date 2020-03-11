@@ -12,7 +12,7 @@ namespace PermaFungiTest
     {
         private string connexion = "Persist Security Info=False;User ID=AlpagaUser;Password=AlpagaUser;Initial Catalog=Alpaga;Server=192.168.0.100\\HACKATHON";
         [TestMethod]
-        public void TestMethod1()
+        public void GetOne()
         {
             var Cxt = new VendsRepository(connexion);
 
