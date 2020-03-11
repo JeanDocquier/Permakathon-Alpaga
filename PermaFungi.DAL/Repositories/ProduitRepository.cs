@@ -23,7 +23,20 @@ namespace PermaFungi.DAL.Repositories
         }
 
 
+        public IEnumerable<Produit> GetByDate(DateTime dateDebut, DateTime dateFin, int idPermafungi)
+        {
+            SelectAllCommand = @"SELECT * FROM Vends
+             INNER JOIN PermaFungi ON PermaFungi.idPermaFungi = Vends.idPermaFungi
+             INNER JOIN Produit ON Produit.idProduit = Vends.idPermaFungi
+             where Vends.dateVends Between @dateDebut AND @dateFin
+             AND Vends.idPermaFungi = @idPermafungi;";
+            Dictionary<string, object> QueryParameters = new Dictionary<string, object>();
+            QueryParameters.Add("dateDebut", dateDebut);
+            QueryParameters.Add("dateFin", dateFin);
+            QueryParameters.Add("idPermaFungi ", idPermafungi);
+            return base.getAll(Map, QueryParameters);
 
+        } 
 
 
         public override IEnumerable<Produit> GetAll()

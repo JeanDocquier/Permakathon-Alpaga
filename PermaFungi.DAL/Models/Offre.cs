@@ -12,7 +12,7 @@ namespace PermaFungi.DAL.Models
     {
         private int _idPermaFungi;
         private int _idFormation;
-
+        private DateTime _dateoffreFormation;
         public int IdPermaFungi { get => _idPermaFungi; set => _idPermaFungi = value; }
         public int IdFormation { get => _idFormation; set => _idFormation = value; }
 
@@ -24,5 +24,6 @@ namespace PermaFungi.DAL.Models
             }
         }
 
+        public DateTime DateoffreFormation { get => _dateoffreFormation; set => _dateoffreFormation = value; }
     }
 }
