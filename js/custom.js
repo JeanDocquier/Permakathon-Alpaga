@@ -48,3 +48,22 @@ submit.addEventListener("click", function (e) {
 FIN AJOUTER UTILISATEUR 
 ****
 ***/
+
+
+
+
+/***
+****
+MENU MIS EN EVIDENCE
+****
+***/
+
+function getURL(){
+    
+}
+
+/***
+****
+MENU MIS EN EVIDENCE FIN
+****
+***/

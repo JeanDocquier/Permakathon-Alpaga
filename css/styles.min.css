@@ -40,7 +40,7 @@ section:not(#identification) {
 }
 
 select,
-.btn {
+.btn, .btn-research {
   background-color: rgba(255, 0, 0, 0);
   padding: 5px;
   height: 50px;
@@ -120,6 +120,13 @@ nav div {
   height: 100%;
 }
 
+hr {
+  width: 500px;
+  margin-left: 0;
+  margin-bottom: 20px;
+  border: 5px solid #673b2c;
+}
+
 h2 {
   font-size: 62px;
   font-family: "Source Sans Pro";
@@ -129,9 +136,9 @@ p,
 ul {
   font-size: 24px;
 }
-
-ul {
-  column-count: 3;
+p li,
+ul li {
+  margin-top: 15px;
 }
 
 /** INDICATEUR **/
@@ -284,4 +291,46 @@ canvas {
 
 .rajouter-employe {
   margin-bottom: 15px;
+}
+
+/** TACHES **/
+.action-taches {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 100px;
+}
+
+.btn-research {
+  width: 200px;
+}
+
+h3 {
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.liste-taches {
+  width: 1000px;
+}
+.liste-taches td, .liste-taches th {
+  border: 1px solid black;
+  padding: 20px;
+}
+.liste-taches .execution {
+  text-align: center;
+}
+
+/** REGION **/
+.changer-region {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  justify-content: space-between;
+  width: 150px;
+}
+.changer-region input[type=submit] {
+  padding: 15px;
+  background-color: #673b2c;
+  border: 0px;
+  color: white;
 }

@@ -14,13 +14,12 @@
         <div class="selection-tableau">
             <select class="graph-selecteur" name="annee-tableau" id="annee-tableau">
                 <!-- INSERT OPTION EN FONCTION DE DB -->
-                <option selected="selected" value="2019">2019</option>
                 <option value="2018">2018</option>
             </select>
             <select class="graph-selecteur" name="categorie-tableau" id="categorie-tableau">
                 <!-- INSERT OPTION EN FONCTION DE DB -->
-                <option selected="selected" value="financiers">Financier</option>
-                <option value="Vente">Vente</option>
+                <option selected="selected" value="production">Production</option>
+                <option value="ventes">Ventes</option>
             </select>
         </div>
         <div class="wrapper-graphiques">

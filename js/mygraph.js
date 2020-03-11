@@ -14,9 +14,9 @@ for (var i = 0; i < donnee_tableau.length; i++) {
 
 function createTableauUI(donneesJSON) {
     var tableau = document.querySelector('.tableau-donnees');
-            tableau.innerHTML = " ";
+    tableau.innerHTML = " ";
 
-    console.log(tableau);
+    //console.log(tableau);
     for (mydata in donneesJSON) {
         var donnees = donneesJSON[mydata]
         if (mydata == "Mois") {
@@ -63,26 +63,25 @@ var couleursgraph = ['#6464ff', '#6fd060', '#EBC65D', '#FF8882', '#886BE8', '#75
 function getTableauGraph(donneesJSON, mois) {
     var array_mois = [];
     console.log(Array.isArray(donneesJSON), "TYPE RECU DONNEES");
-    if(Array.isArray(donneesJSON)){
-        for (var i = 1 ; i<donneesJSON.length ; i++){
+    if (Array.isArray(donneesJSON)) {
+        for (var i = 1; i < donneesJSON.length; i++) {
             var unedata = [];
             unedata.push(donneesJSON[i][0]);
             unedata.push(donneesJSON[i][1]);
             array_mois.push(unedata);
         }
-    }
-    else{
-    for (mydata in donneesJSON) {
-        var meschiffres = donneesJSON[mydata];
-        var unedata = [];
-        unedata.push(mydata);
-        unedata.push(meschiffres[mois]);
-        array_mois.push(unedata);
-    }
+    } else {
+        for (mydata in donneesJSON) {
+            var meschiffres = donneesJSON[mydata];
+            var unedata = [];
+            unedata.push(mydata);
+            unedata.push(meschiffres[mois]);
+            array_mois.push(unedata);
+        }
     }
     console.log("Array_mois", array_mois);
     return (array_mois);
-        
+
 }
 
 
@@ -197,10 +196,10 @@ function createDataSet(mylabel, myColor, mydata_numbers) {
 
 //ON VA CREER UN TABLEAU DE DATASETS EN FONCTION DE LA LONGUEUR DU TABLEAU dataJSON
 // --> RETOURNE UN TABLEAU
-function getDataSet(donneesJSON, typeofgraph, moisbar = 0 /**JANVIER PAR DEFAUT**/ ) {
+function getDataSet(donneesJSON) {
     var arrayOfDataSets = [];
-    if (typeofgraph == "line") {
-        console.log("graph-line");
+    //if (typeofgraph == "line") {
+        //console.log("graph-line");
         for (label in donneesJSON) {
             if (label != "Mois") {
                 //console.log(donneesJSON[label]);
@@ -209,7 +208,7 @@ function getDataSet(donneesJSON, typeofgraph, moisbar = 0 /**JANVIER PAR DEFAUT*
                 arrayOfDataSets.push(createDataSet(label, attributeColor(), meschiffres));
             }
         }
-    } else {
+    /*} else {
         console.log("graph-bar");
         var mybar = getTableauGraph(donneesJSON, moisbar)
         console.log(mybar);
@@ -220,13 +219,13 @@ function getDataSet(donneesJSON, typeofgraph, moisbar = 0 /**JANVIER PAR DEFAUT*
             console.log("label_bar", label_bar, typeof label_bar);
             console.log("data_bar", data_bar, typeof data_bar);
             //console.log(typeof data_parsed);
-            
+
             var dataset = createDataSet(label_bar, attributeColor(), data_bar);
             console.log(dataset)
             arrayOfDataSets.push(dataset);
         }
-    }
-    console.log(arrayOfDataSets)
+    }*/
+    //console.log(arrayOfDataSets)
     return arrayOfDataSets;
 }
 
@@ -248,7 +247,7 @@ function createGraph(place_graph, type_graph, labels, dataJSON2) {
         type: type_graph,
         data: {
             labels: labels,
-            datasets: getDataSet(dataJSON2, type_graph)
+            datasets: getDataSet(dataJSON2)
         }
     });
     //console.log(getDataSet(dataJSON2));
@@ -258,21 +257,22 @@ function createGraph(place_graph, type_graph, labels, dataJSON2) {
 
 //ON VA AFFICHER AFFICHER LE GRAPH CREE EN
 function getGraph() {
-    var anneeselect = document.querySelector('#annee-tableau').value;
+    //var anneeselect = document.querySelector('#annee-tableau').value;
     //console.log(anneeselect);
     var categorieselect = document.querySelector('#categorie-tableau').value;
     //console.log(categorieselect);
     //var moisselect = document.querySelector('#mois-graphique').value;
     //console.log(moisselect);
-    let formData = new FormData(); // L'équivalent d'un formulaire utilisé par XHR
+    //let formData = new FormData(); // L'équivalent d'un formulaire utilisé par XHR
     //    formData.set('query', 'all');   // Les valeurs permises de query sont (like | priceRange | category)
     let dataJson;
 
-    formData.set('annee', anneeselect); // Si query == 'like', il faut aussi un paramètre annee (String)
+    //formData.set('annee', anneeselect); // Si query == 'like', il faut aussi un paramètre annee (String)
     //formData.set('mois', moisselect); // Si query == 'priceRange', il faut aussi min (Number) et max (Number)
-    formData.set('categorie', categorieselect); // Si category == 'priceRange', il faut aussi category (CD | BOOK | GAME)
+    //formData.set('categorie', categorieselect); // Si category == 'priceRange', il faut aussi category (CD | BOOK | GAME)
     //console.log(formData);
-    let urlAPI = './jsonproduction.json';
+    let urlAPI = './jsonproduction.json'; //Json créé manuellement
+    //let urlAPI = '192.168.0.100\HACKATHON/api/users'; //Json créé via serveur
     let xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function (e) {
         if (this.readyState == 1) {
@@ -280,7 +280,17 @@ function getGraph() {
         } else if (this.readyState == 4) {
             if (this.status == 200) {
                 // CONSTRUCTION DES GRAPHIQUES
+                //console.log(categorieselect);
                 dataJson = JSON.parse(this.responseText);
+                var categorie_a_traiter;
+                if (categorieselect == "ventes") {
+                    categorie_a_traiter = dataJson.categorie.ventes[0]
+                } else if (categorieselect == "production") {
+                    categorie_a_traiter = dataJson.categorie.production[0]
+
+                };
+                dataJson = categorie_a_traiter;
+                //dataJson = dataJson.categorie;    
                 //console.log(dataJson);
                 //console.log(getMois(dataJson));
                 //getDataSet(dataJson);
@@ -303,5 +313,5 @@ function getGraph() {
         }
     })
     xhr.open('POST', urlAPI, true);
-    xhr.send(formData);
+    xhr.send();
 }

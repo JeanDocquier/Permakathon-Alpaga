@@ -8,7 +8,7 @@
         <div>
             <a href="tache.php"><i class="fas fa-tasks"></i> Tâches</a>
             <a href="synergie.php"><i class="fas fa-project-diagram"></i> Synergie</a>
-            <a href="gestion-utilisateur.php"><i class="fas fa-users"></i> Gestion utilisateur </a> <!-- Uniquement accessible pour le Super Admin -->
+            <a href="gestion-utilisateur.php"><i class="fas fa-users"></i> Gestion utilisateurs </a> <!-- Uniquement accessible pour le Super Admin -->
             
         </div>
         <div>

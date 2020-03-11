@@ -13,6 +13,7 @@
 
     <section id="utilisateur">
         <h2>Bienvenu Tony Stark </h2>
+        <hr>
         <p>Vous êtes enregistré en tant qu'utilisateur Administrateur</p>
         <p>Vous pouvez sur ce site :</p>
         <ul>

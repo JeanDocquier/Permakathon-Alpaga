@@ -12,7 +12,9 @@
     <?php include('menu.php') ?>
     <section id="changer-region">
         <h2>Changer de région</h2>
-        <form action="changer-region" name="changer-region">
+        <p>Votre région est : Bruxelles</p>
+        <p>Vous consulez la région : Bruxelles</p>
+        <form class="changer-region" action="changer-region" name="changer-region">
             <select name="region" id="region">
                 <!-- INSERT OPTION EN FONCTION DE DB -->
                 <option value="Bruxelles">Bruxelles</option>

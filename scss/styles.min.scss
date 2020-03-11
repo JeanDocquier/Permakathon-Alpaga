@@ -51,7 +51,7 @@ section:not(#identification) {
 }
 
 select,
-.btn {
+.btn, .btn-research {
     background-color: rgba(255, 0, 0, 0);
     padding: 5px;
     height: 50px;
@@ -136,7 +136,12 @@ nav {
 #utilisateur {
     height: 100%;
 }
-
+hr{
+    width: 500px;
+    margin-left: 0;
+    margin-bottom: 20px;
+    border : 5px solid $brun;
+}
 h2 {
     font-size: 62px;
     font-family: 'Source Sans Pro';
@@ -145,11 +150,11 @@ h2 {
 p,
 ul {
     font-size: 24px;
+    li{
+        margin-top: 15px;
+    }
 }
 
-ul {
-    column-count: 3;
-}
 
 /** INDICATEUR **/
 #tableau,
@@ -315,4 +320,45 @@ canvas {
 }
 .rajouter-employe{
     margin-bottom: 15px;
+}
+
+
+/** TACHES **/
+
+.action-taches{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 100px;
+}
+.btn-research{
+    width: 200px;
+}
+h3{
+    font-size: 28px;
+    text-transform: uppercase;
+}
+.liste-taches{
+    width: 1000px;
+    td, th{
+        border: 1px solid black;
+        padding: 20px;
+    }
+    .execution{
+        text-align: center;
+    }
+}
+
+/** REGION **/
+.changer-region{
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-between;
+    width: 150px;
+    input[type="submit"]{
+        padding: 15px;
+        background-color: $brun;
+        border: 0px;
+        color: white;
+    }
 }
