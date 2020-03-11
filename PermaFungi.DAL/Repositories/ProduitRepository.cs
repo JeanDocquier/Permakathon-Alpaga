@@ -14,10 +14,10 @@ namespace PermaFungi.DAL.Repositories
         {
             SelectOneCommand = "Select * from Produit where idProduit=@idProduit";
             SelectAllCommand = "Select * from Produit";
-            InsertCommand = @"INSERT INTO  Produit (nomProduit , quantite, prix, description)
+            InsertCommand = @"INSERT INTO  Produit (nom , quantite, prix, description)
                             OUTPUT inserted.idProduit VALUES(@NomProduit, @Quantite, @Prix ,@Description)";
             UpdateCommand = @"UPDATE  Produit
-                           SET nomProduit = @NomProduit, quantite = @Quantite, prix = @Prix, description = @description
+                           SET nom = @NomProduit, quantite = @Quantite, prix = @Prix, description = @description
                          WHERE idProduit = @IdProduit;";
             DeleteCommand = @"Delete from  Produit  WHERE idProduit = @IdProduit;";
         }
@@ -82,7 +82,7 @@ namespace PermaFungi.DAL.Repositories
         {
             Dictionary<string, object> p = new Dictionary<string, object>();
             p["idProduit"] = toInsert.Id;
-            p["nom"] = toInsert.NomProduit;
+            p["NomProduit"] = toInsert.NomProduit;
             p["quantite"] = toInsert.Quantite;
             p["prix"] = toInsert.Prix;
             p["description"] = toInsert.Description;

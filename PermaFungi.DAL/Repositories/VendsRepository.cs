@@ -74,7 +74,7 @@ namespace PermaFungi.DAL.Repositories
 
                 IdPermaFungi = (int)p["IdPermaFungi"],
                 IdProduit = (int)p["IdProduit"],
-                DateVente = (DateTime)p["DateVente"]
+                DateVente = (DateTime)p["dateVends"]
 
             };
         }
