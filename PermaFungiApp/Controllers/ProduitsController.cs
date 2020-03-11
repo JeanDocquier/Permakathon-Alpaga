@@ -14,22 +14,74 @@ namespace PermaFungiApp.Controllers
     {
         private string connexion = "Persist Security Info=False;User ID=AlpagaUser;Password=AlpagaUser;Initial Catalog=Alpaga;Server=192.168.0.100\\HACKATHON";
 
-        [HttpPost]
-        public ProduitTO Ajouter(string nom, int quantite, double prix, string description)
+        public HttpResponseMessage Get()
         {
-            var prod = new Produit { NomProduit = nom, Quantite = quantite, Prix = prix, Description = description };
-            var Cxt = new ProduitRepository(connexion);
-            var result = Cxt.Insert(prod).ToTransferObject();
-            return result;
+            ProduitRepository prodRepo = new ProduitRepository(connexion);
+            var prod = prodRepo.GetAll().ToList();
+            return Request.CreateResponse(HttpStatusCode.OK, prod);
         }
 
-        [HttpPost]
-        public List<float> ListePrix(string name)
+        public HttpResponseMessage Get(int id)
         {
-            var ProdCxt = new ProduitRepository(connexion);
-            var result = ProdCxt.GetAll().Where(x=>x.NomProduit.Equals(name)).Select(x=>(float)x.Prix).ToList();
-           
-            return result;
+            ProduitRepository prodRepo = new ProduitRepository(connexion);
+            var result = prodRepo.GetOne(id);
+            if (result != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "prod with ID: " + id.ToString() + "not found");
+            }
+        }
+        //create
+        public HttpResponseMessage Post([FromBody]Produit prod)
+        {
+            try
+            {
+                ProduitRepository prodRepo = new ProduitRepository(connexion);
+                prodRepo.Insert(prod);
+                return Request.CreateResponse(HttpStatusCode.Created, prod);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+        //update
+        public HttpResponseMessage Put([FromBody]Produit prod)
+        {
+            try
+            {
+                ProduitRepository prodRepo = new ProduitRepository(connexion);
+                if (prod == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "prod Not Found");
+                }
+                prodRepo.Update(prod);
+                return Request.CreateResponse(HttpStatusCode.OK, prod);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        public HttpResponseMessage delete(int id)
+        {
+            try
+            {
+                ProduitRepository prodRepo = new ProduitRepository(connexion);
+                var prodToDelete = prodRepo.GetOne(id);
+                if (prodToDelete == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "prod with ID: " + id.ToString() + "not found");
+                prodRepo.Delete(id);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
     }
 }

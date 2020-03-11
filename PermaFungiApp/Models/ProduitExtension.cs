@@ -17,7 +17,6 @@ namespace PermaFungiApp.Models
                 quantite = produit.Quantite,
                 prix = produit.Prix,
                 description = produit.Description,
-                date = produit.Date
             };
         }
 
@@ -29,8 +28,7 @@ namespace PermaFungiApp.Models
                 NomProduit = produit.nomProduit,
                 Quantite = produit.quantite,
                 Prix = produit.prix,
-                Description = produit.description
-                Date = produit.date
+                Description = produit.description,
             };
         }
     }
