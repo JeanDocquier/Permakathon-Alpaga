@@ -20,6 +20,12 @@ h2 {
   align-items: center;
   background-color: #f1ebdd;
 }
+.body-index select {
+  width: 100%;
+}
+.body-index form input, .body-index form select {
+  margin-bottom: 25px;
+}
 
 a {
   text-decoration: none;
@@ -129,6 +135,11 @@ ul {
 }
 
 /** INDICATEUR **/
+#tableau,
+#graphiques {
+  margin-bottom: 100px;
+}
+
 .le-tableau td {
   border: 1px solid black;
 }
@@ -152,6 +163,11 @@ ul {
   margin: 0;
 }
 
+.selection-tableau {
+  display: flex;
+  width: 350px;
+  justify-content: space-between;
+}
 .selection-tableau select {
   margin-bottom: 15px;
 }
@@ -164,7 +180,7 @@ ul {
 }
 
 .graphique-annuel {
-  width: 800px;
+  width: 1200px;
 }
 
 .graphique-mensuel {
@@ -189,27 +205,38 @@ canvas {
 }
 
 .liste-utilisateur tr td:nth-of-type(1),
-.liste-utilisateur tr > th:nth-of-type(1), .tableau-donnees tr td:nth-of-type(1),
-.tableau-donnees tr > th:nth-of-type(1) {
-  width: 400px;
+.liste-utilisateur tr > th:nth-of-type(1) {
+  width: 300px;
   padding: 10px 10px;
   text-align: left;
 }
 .liste-utilisateur tr td:nth-of-type(2),
-.liste-utilisateur tr > th:nth-of-type(2), .tableau-donnees tr td:nth-of-type(2),
-.tableau-donnees tr > th:nth-of-type(2) {
+.liste-utilisateur tr > th:nth-of-type(2) {
   width: 200px;
   padding: 10px 10px;
   text-align: left;
   border-left: 0px;
 }
 .liste-utilisateur td,
-.liste-utilisateur th, .tableau-donnees td,
+.liste-utilisateur th {
+  border: 1px solid black;
+}
+.liste-utilisateur td {
+  border-top: 0px;
+}
+
 .tableau-donnees th {
   border: 1px solid black;
 }
-.liste-utilisateur td, .tableau-donnees td {
+.tableau-donnees tr td, .tableau-donnees tr th {
+  padding: 20px;
+}
+.tableau-donnees td {
+  text-align: center;
   border-top: 0px;
+}
+.tableau-donnees td input {
+  width: 50px;
 }
 
 .ajout-utilisateur {
@@ -257,4 +284,4 @@ canvas {
 
 .rajouter-employe {
   margin-bottom: 15px;
-}    
+}

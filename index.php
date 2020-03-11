@@ -11,7 +11,7 @@
 <body class="body-index">
     <section id="identification">
         <img src="img/permafungilogo.png" alt="Permafungi">
-        <form action="" method="post">
+        <form action="server/api/authentification" method="post">
             <!-- INSERTION DE L'ACTION // INSERTION METHOD -->
             <input placeholder="Identifiant" type="text" name="identifiant">
             <input placeholder="Mot de passe" type="password" name="motdepasse">

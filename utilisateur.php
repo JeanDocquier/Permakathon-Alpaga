@@ -12,15 +12,15 @@
     <?php include('menu.php') ?>
 
     <section id="utilisateur">
-        <h2>Bienvenu(e) //INSERT NOM// </h2>
-        <p>Vous êtes enregistré en tant qu'utilisateur //INSERT RÔLE UTILISATEUR</p>
+        <h2>Bienvenu Tony Stark </h2>
+        <p>Vous êtes enregistré en tant qu'utilisateur Administrateur</p>
         <p>Vous pouvez sur ce site :</p>
         <ul>
             <!-- INSERTION RÔLE EN FONCTION DE DB -->
-            <li>//INSERT RÔLE 1 </li>
-            <li>//INSERT RÔLE 2</li>
-            <li>//INSERT RÔLE 3</li>
-            <li>//INSERT RÔLE 4</li>
+            <li>Ajouter des utilisateurs</li>
+            <li>Insérer des tâches, les réaliser, les supprimer</li>
+            <li>Compléter les informations relatives aux indicateurs</li>
+            <li>Changer de région et avoir accès aux contenus des autres immplémentations PermaFungi</li>
         </ul>
     </section>
 

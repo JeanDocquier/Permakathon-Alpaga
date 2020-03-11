@@ -8,8 +8,9 @@
 
 <body>
     <?php include('menu.php') ?>
-    <section id="tableau">
-        <h2>Tableau de données</h2>
+
+    <section id="graphiques">
+        <h2>Graphiques</h2>
         <div class="selection-tableau">
             <select class="graph-selecteur" name="annee-tableau" id="annee-tableau">
                 <!-- INSERT OPTION EN FONCTION DE DB -->
@@ -22,26 +23,18 @@
                 <option value="Vente">Vente</option>
             </select>
         </div>
-        <div class="le-tableau">
-            <table class="tableau-donnees">
-                
-
-            </table>
-        </div>
-    </section>
-    <section id="graphiques">
-        <h2>Graphiques</h2>
         <div class="wrapper-graphiques">
-            <div class="graphique-annuel"> 
+            <div class="graphique-annuel">
                 <canvas style="height:400px; width:100%" id="graphique-annuel">
 
                 </canvas>
 
- 
+
             </div>
+<!--
             <div class="graphique-mensuel">
                 <select class="graph-selecteur" name="mois-graphique" id="mois-graphique">
-                    <!-- INSERT OPTION EN FONCTION DE DB -->
+                     INSERT OPTION EN FONCTION DE DB 
                     <option selected="selected" value="0">Janvier</option>
                     <option value="1">Février</option>
                     <option value="2">Mars</option>
@@ -59,6 +52,16 @@
 
                 </canvas>
             </div>
+-->
+        </div>
+    </section>
+    <section id="tableau">
+        <h2>Tableau de données</h2>
+        <div class="le-tableau">
+            <table cellspacing="0" class="tableau-donnees">
+
+
+            </table>
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>

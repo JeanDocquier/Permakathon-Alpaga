@@ -8,7 +8,6 @@ var donnee_tableau = document.querySelectorAll('.donnee-chiffree');
 //console.log(donnee_tableau);
 for (var i = 0; i < donnee_tableau.length; i++) {
     donnee_tableau[i].addEventListener("change", function () {
-        
         createTableauUI();
     });
 }
@@ -20,7 +19,7 @@ function createTableauUI(donneesJSON) {
     console.log(tableau);
     for (mydata in donneesJSON) {
         var donnees = donneesJSON[mydata]
-        if (mydata == "mois") {
+        if (mydata == "Mois") {
             var entete = document.createElement('tr');
             var info_ligne = document.createElement('th');
             info_ligne.textContent = mydata;
@@ -40,7 +39,11 @@ function createTableauUI(donneesJSON) {
             row.appendChild(info_ligne);
             for (var i = 0; i < donnees.length; i++) {
                 var cellule_donnee = document.createElement('td');
-                cellule_donnee.textContent = donnees[i];
+                var input_donnee = document.createElement('input');
+                input_donnee.type = "text";
+                input_donnee.value = donnees[i];
+                cellule_donnee.appendChild(input_donnee);
+                //cellule_donnee.textContent = donnees[i];
                 row.appendChild(cellule_donnee);
             }
             tableau.appendChild(row);
@@ -59,6 +62,16 @@ var couleursgraph = ['#6464ff', '#6fd060', '#EBC65D', '#FF8882', '#886BE8', '#75
 
 function getTableauGraph(donneesJSON, mois) {
     var array_mois = [];
+    console.log(Array.isArray(donneesJSON), "TYPE RECU DONNEES");
+    if(Array.isArray(donneesJSON)){
+        for (var i = 1 ; i<donneesJSON.length ; i++){
+            var unedata = [];
+            unedata.push(donneesJSON[i][0]);
+            unedata.push(donneesJSON[i][1]);
+            array_mois.push(unedata);
+        }
+    }
+    else{
     for (mydata in donneesJSON) {
         var meschiffres = donneesJSON[mydata];
         var unedata = [];
@@ -66,7 +79,10 @@ function getTableauGraph(donneesJSON, mois) {
         unedata.push(meschiffres[mois]);
         array_mois.push(unedata);
     }
+    }
+    console.log("Array_mois", array_mois);
     return (array_mois);
+        
 }
 
 
@@ -184,9 +200,9 @@ function createDataSet(mylabel, myColor, mydata_numbers) {
 function getDataSet(donneesJSON, typeofgraph, moisbar = 0 /**JANVIER PAR DEFAUT**/ ) {
     var arrayOfDataSets = [];
     if (typeofgraph == "line") {
-        //console.log("graph-line");
+        console.log("graph-line");
         for (label in donneesJSON) {
-            if (label != "mois") {
+            if (label != "Mois") {
                 //console.log(donneesJSON[label]);
                 var meschiffres = donneesJSON[label];
                 //console.log(mydata, dataJSON[mydata]);
@@ -194,27 +210,29 @@ function getDataSet(donneesJSON, typeofgraph, moisbar = 0 /**JANVIER PAR DEFAUT*
             }
         }
     } else {
-        //console.log("graph-bar");
+        console.log("graph-bar");
         var mybar = getTableauGraph(donneesJSON, moisbar)
-        //console.log(mybar);
+        console.log(mybar);
 
         for (var i = 1; i < mybar.length; i++) {
             var label_bar = mybar[i][0];
             var data_bar = mybar[i][1];
-            //console.log(label_bar);
-            //console.log(data_bar);
+            console.log("label_bar", label_bar, typeof label_bar);
+            console.log("data_bar", data_bar, typeof data_bar);
             //console.log(typeof data_parsed);
-            //console.log(createDataSet(label_bar, attributeColor(), data_bar));
-            arrayOfDataSets.push(createDataSet(label_bar, attributeColor(), data_bar));
+            
+            var dataset = createDataSet(label_bar, attributeColor(), data_bar);
+            console.log(dataset)
+            arrayOfDataSets.push(dataset);
         }
     }
-    //console.log(arrayOfDataSets)
+    console.log(arrayOfDataSets)
     return arrayOfDataSets;
 }
 
 function getMois(donneesJSON) {
     for (mydata in donneesJSON) {
-        if (mydata == "mois") {
+        if (mydata == "Mois") {
             //console.log(mydata);
             return donneesJSON[mydata];
         }
@@ -244,19 +262,18 @@ function getGraph() {
     //console.log(anneeselect);
     var categorieselect = document.querySelector('#categorie-tableau').value;
     //console.log(categorieselect);
-    var moisselect = document.querySelector('#mois-graphique').value;
+    //var moisselect = document.querySelector('#mois-graphique').value;
     //console.log(moisselect);
     let formData = new FormData(); // L'équivalent d'un formulaire utilisé par XHR
     //    formData.set('query', 'all');   // Les valeurs permises de query sont (like | priceRange | category)
     let dataJson;
 
     formData.set('annee', anneeselect); // Si query == 'like', il faut aussi un paramètre annee (String)
-    formData.set('mois', moisselect); // Si query == 'priceRange', il faut aussi min (Number) et max (Number)
+    //formData.set('mois', moisselect); // Si query == 'priceRange', il faut aussi min (Number) et max (Number)
     formData.set('categorie', categorieselect); // Si category == 'priceRange', il faut aussi category (CD | BOOK | GAME)
     //console.log(formData);
     let urlAPI = './jsonproduction.json';
     let xhr = new XMLHttpRequest();
-
     xhr.addEventListener('readystatechange', function (e) {
         if (this.readyState == 1) {
             //pleaseWait.style['display'] = 'flex';
@@ -266,15 +283,19 @@ function getGraph() {
                 dataJson = JSON.parse(this.responseText);
                 //console.log(dataJson);
                 //console.log(getMois(dataJson));
-                getDataSet(dataJson);
+                //getDataSet(dataJson);
                 createTableauUI(dataJson);
                 //console.log(getTableauGraph(dataJson, 4)[1]);
                 couleursgraph = ['#6464ff', '#6fd060', '#EBC65D', '#FF8882', '#886BE8', '#75FFEC'] //On réinitalise le tableau des couleurs
                 createGraph("graphique-annuel", "line", getMois(dataJson), dataJson);
                 //console.log(getDataSet(dataJson, 2));
                 //console.log(getTableauGraph(dataJson, 0));
-                couleursgraph = ['#6464ff', '#6fd060', '#EBC65D', '#FF8882', '#886BE8', '#75FFEC'] //On réinitalise le tableau des couleurs
-                createGraph("graphique-mensuel", "bar", getTableauGraph(dataJson, moisselect)[0], getTableauGraph(dataJson, moisselect));
+                //couleursgraph = ['#6464ff', '#6fd060', '#EBC65D', '#FF8882', '#886BE8', '#75FFEC'] //On réinitalise le tableau des couleurs
+                //var tempgetTableauGraph = [getTableauGraph(dataJson, moisselect)[0]];
+                //console.log ("tempgetTableauGraph", tempgetTableauGraph);
+                //var getTableauGraph2 = getTableauGraph(dataJson, moisselect);
+                //console.log("getTableauGraph2", getTableauGraph2);
+                //createGraph("graphique-mensuel", "bar", tempgetTableauGraph, getTableauGraph2);
 
             } else {
                 // ERREUR

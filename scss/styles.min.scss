@@ -28,6 +28,14 @@ h2 {
     justify-content: center;
     align-items: center;
     background-color: $beigeclair;
+    select{
+        width: 100%;
+    }
+    form {
+        input, select{
+            margin-bottom: 25px;
+        }
+    }
 }
 
 a {
@@ -145,7 +153,9 @@ ul {
 
 /** INDICATEUR **/
 #tableau,
-#graphiques {}
+#graphiques {
+    margin-bottom: 100px;
+}
 
 .le-tableau {
     td {
@@ -178,6 +188,9 @@ ul {
 }
 
 .selection-tableau {
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
     select {
         margin-bottom: 15px;
     }
@@ -191,7 +204,7 @@ ul {
 }
 
 .graphique-annuel {
-    width: 800px;
+    width: 1200px;
 }
 
 .graphique-mensuel {
@@ -216,10 +229,10 @@ canvas {
     width: 1000px;
 }
 
-.liste-utilisateur, .tableau-donnees {
+.liste-utilisateur {
     tr td:nth-of-type(1),
     tr > th:nth-of-type(1) {
-        width: 400px;
+        width: 300px;
         padding: 10px 10px;
         text-align: left;
     }
@@ -238,6 +251,23 @@ canvas {
     }
     td{
         border-top: 0px;
+    }
+}
+
+.tableau-donnees{
+    th{
+        border: 1px solid black;
+    }    
+    tr td, tr th{
+        padding: 20px;
+        
+    }
+    td{
+        text-align: center;
+        border-top: 0px;
+        input{
+            width: 50px;
+        }
     }
 }
 
