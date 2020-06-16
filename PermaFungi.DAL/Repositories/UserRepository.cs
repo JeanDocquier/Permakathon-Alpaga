@@ -98,9 +98,6 @@ namespace PermaFungi.DAL.Repositories
                 Role = arg["role"].ToString(),
                 Adresse = arg["adresse"].ToString(),
                 IdPermaFungi = (int)arg["idPermaFungi"],
-
-                //WE CAN'T STORE PASSWORD FROM DB
-                // MotDePasse= arg["MotDePasse"].ToString()
             };
         }
         #endregion

@@ -1,0 +1,131 @@
+CREATE TABLE "PERMAFUNGI" (
+  "idpermafungi" VARCHAR(42),
+  "ville" VARCHAR(42),
+  "adresse" VARCHAR(42),
+  "contact" VARCHAR(42),
+  "email" VARCHAR(42),
+  PRIMARY KEY ("idpermafungi")
+);
+
+CREATE TABLE "USER" (
+  "iduser" VARCHAR(42),
+  "nom" VARCHAR(42),
+  "prenom" VARCHAR(42),
+  "email" VARCHAR(42),
+  "motdepasse" VARCHAR(42),
+  "role" VARCHAR(42),
+  "adresse" VARCHAR(42),
+  "idpermafungi" VARCHAR(42),
+  PRIMARY KEY ("iduser"),
+  FOREIGN KEY ("idpermafungi") REFERENCES "PERMAFUNGI" ("idpermafungi")
+);
+
+CREATE TABLE "OBJECTIF" (
+  "idobjectif" VARCHAR(42),
+  "prevision" VARCHAR(42),
+  "date" VARCHAR(42),
+  PRIMARY KEY ("idobjectif")
+);
+
+CREATE TABLE "FORMATION" (
+  "idformation" VARCHAR(42),
+  "nom" VARCHAR(42),
+  "quantite" VARCHAR(42),
+  "prix" VARCHAR(42),
+  "idobjectif" VARCHAR(42),
+  PRIMARY KEY ("idformation"),
+  FOREIGN KEY ("idobjectif") REFERENCES "OBJECTIF" ("idobjectif")
+);
+
+CREATE TABLE "DONNER" (
+  "iduser" VARCHAR(42),
+  "idformation" VARCHAR(42),
+  PRIMARY KEY ("iduser", "idformation"),
+  FOREIGN KEY ("iduser") REFERENCES "USER" ("iduser"),
+  FOREIGN KEY ("idformation") REFERENCES "FORMATION" ("idformation")
+);
+
+CREATE TABLE "PARTENAIRECLIENT" (
+  "idpartenaireclient" VARCHAR(42),
+  "nom" VARCHAR(42),
+  "adresse" VARCHAR(42),
+  "email" VARCHAR(42),
+  PRIMARY KEY ("idpartenaireclient")
+);
+
+CREATE TABLE "OFFRE" (
+  "idpartenaireclient" VARCHAR(42),
+  "idformation" VARCHAR(42),
+  PRIMARY KEY ("idpartenaireclient", "idformation"),
+  FOREIGN KEY ("idpartenaireclient") REFERENCES "PARTENAIRECLIENT" ("idpartenaireclient"),
+  FOREIGN KEY ("idformation") REFERENCES "FORMATION" ("idformation")
+);
+
+CREATE TABLE "PRODUIT" (
+  "idproduit" VARCHAR(42),
+  "nom" VARCHAR(42),
+  "quantite" VARCHAR(42),
+  "prix" VARCHAR(42),
+  "idobjectif" VARCHAR(42),
+  PRIMARY KEY ("idproduit"),
+  FOREIGN KEY ("idobjectif") REFERENCES "OBJECTIF" ("idobjectif")
+);
+
+CREATE TABLE "ACHETE" (
+  "idpartenaireclient" VARCHAR(42),
+  "idproduit" VARCHAR(42),
+  PRIMARY KEY ("idpartenaireclient", "idproduit"),
+  FOREIGN KEY ("idpartenaireclient") REFERENCES "PARTENAIRECLIENT" ("idpartenaireclient"),
+  FOREIGN KEY ("idproduit") REFERENCES "PRODUIT" ("idproduit")
+);
+
+CREATE TABLE "CONSOMATION" (
+  "idconsomation" VARCHAR(42),
+  "typeconsomation" VARCHAR(42),
+  "prixconsomation" VARCHAR(42),
+  "idobjectif" VARCHAR(42),
+  PRIMARY KEY ("idconsomation"),
+  FOREIGN KEY ("idobjectif") REFERENCES "OBJECTIF" ("idobjectif")
+);
+
+CREATE TABLE "COLLABORE" (
+  "idpartenaireclient" VARCHAR(42),
+  "idpermafungi" VARCHAR(42),
+  PRIMARY KEY ("idpartenaireclient", "idpermafungi"),
+  FOREIGN KEY ("idpartenaireclient") REFERENCES "PARTENAIRECLIENT" ("idpartenaireclient"),
+  FOREIGN KEY ("idpermafungi") REFERENCES "PERMAFUNGI" ("idpermafungi")
+);
+
+CREATE TABLE "VENDS" (
+  "idpermafungi" VARCHAR(42),
+  "idproduit" VARCHAR(42),
+  PRIMARY KEY ("idpermafungi", "idproduit"),
+  FOREIGN KEY ("idpermafungi") REFERENCES "PERMAFUNGI" ("idpermafungi"),
+  FOREIGN KEY ("idproduit") REFERENCES "PRODUIT" ("idproduit")
+);
+
+CREATE TABLE "MACHINE" (
+  "idmachine" VARCHAR(42),
+  "numeroserie" VARCHAR(42),
+  "idpermafungi" VARCHAR(42),
+  PRIMARY KEY ("idmachine"),
+  FOREIGN KEY ("idpermafungi") REFERENCES "PERMAFUNGI" ("idpermafungi")
+);
+
+CREATE TABLE "CONSOMME" (
+  "idmachine" VARCHAR(42),
+  "idconsomation" VARCHAR(42),
+  PRIMARY KEY ("idmachine", "idconsomation"),
+  FOREIGN KEY ("idmachine") REFERENCES "MACHINE" ("idmachine"),
+  FOREIGN KEY ("idconsomation") REFERENCES "CONSOMATION" ("idconsomation")
+);
+
+CREATE TABLE "DATAWORK" (
+  "iddatawork" VARCHAR(42),
+  "jourabsence" VARCHAR(42),
+  "typecontrat" VARCHAR(42),
+  "salairebrut" VARCHAR(42),
+  "iduser" VARCHAR(42),
+  PRIMARY KEY ("iddatawork"),
+  FOREIGN KEY ("iduser") REFERENCES "USER" ("iduser")
+);

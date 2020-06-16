@@ -1,0 +1,116 @@
+CREATE DATABASE IF NOT EXISTS PERMAFUNGIS DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE PERMAFUNGIS;
+
+CREATE TABLE DONNER (
+  iduser VARCHAR(42),
+  idformation VARCHAR(42),
+  PRIMARY KEY (iduser, idformation)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE FORMATION (
+  idformation VARCHAR(42),
+  nom VARCHAR(42),
+  quantite VARCHAR(42),
+  prix VARCHAR(42),
+  idobjectif VARCHAR(42),
+  PRIMARY KEY (idformation)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE OBJECTIF (
+  idobjectif VARCHAR(42),
+  prevision VARCHAR(42),
+  date VARCHAR(42),
+  PRIMARY KEY (idobjectif)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE USER (
+  iduser VARCHAR(42),
+  nom VARCHAR(42),
+  prenom VARCHAR(42),
+  email VARCHAR(42),
+  motdepasse VARCHAR(42),
+  role VARCHAR(42),
+  adresse VARCHAR(42),
+  idpermafungi VARCHAR(42),
+  PRIMARY KEY (iduser)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE OFFRE (
+  idpartenaireclient VARCHAR(42),
+  idformation VARCHAR(42),
+  PRIMARY KEY (idpartenaireclient, idformation)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE PARTENAIRECLIENT (
+  idpartenaireclient VARCHAR(42),
+  nom VARCHAR(42),
+  adresse VARCHAR(42),
+  email VARCHAR(42),
+  PRIMARY KEY (idpartenaireclient)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE ACHETE (
+  idpartenaireclient VARCHAR(42),
+  idproduit VARCHAR(42),
+  PRIMARY KEY (idpartenaireclient, idproduit)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE CONSOMATION (
+  idconsomation VARCHAR(42),
+  typeconsomation VARCHAR(42),
+  prixconsomation VARCHAR(42),
+  idobjectif VARCHAR(42),
+  PRIMARY KEY (idconsomation)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE COLLABORE (
+  idpartenaireclient VARCHAR(42),
+  idpermafungi VARCHAR(42),
+  PRIMARY KEY (idpartenaireclient, idpermafungi)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE VENDS (
+  idpermafungi VARCHAR(42),
+  idproduit VARCHAR(42),
+  PRIMARY KEY (idpermafungi, idproduit)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE PRODUIT (
+  idproduit VARCHAR(42),
+  nom VARCHAR(42),
+  quantite VARCHAR(42),
+  prix VARCHAR(42),
+  idobjectif VARCHAR(42),
+  PRIMARY KEY (idproduit)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE CONSOMME (
+  idmachine VARCHAR(42),
+  idconsomation VARCHAR(42),
+  PRIMARY KEY (idmachine, idconsomation)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE DATAWORK (
+  iddatawork VARCHAR(42),
+  jourabsence VARCHAR(42),
+  typecontrat VARCHAR(42),
+  salairebrut VARCHAR(42),
+  iduser VARCHAR(42),
+  PRIMARY KEY (iddatawork)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE PERMAFUNGI (
+  idpermafungi VARCHAR(42),
+  ville VARCHAR(42),
+  adresse VARCHAR(42),
+  contact VARCHAR(42),
+  email VARCHAR(42),
+  PRIMARY KEY (idpermafungi)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE MACHINE (
+  idmachine VARCHAR(42),
+  numeroserie VARCHAR(42),
+  idpermafungi VARCHAR(42),
+  PRIMARY KEY (idmachine)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

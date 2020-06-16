@@ -8,7 +8,7 @@ namespace PermaFungiTest
     [TestClass]
     public class TestUser
     {
-        private string connexion = "Persist Security Info=False;User ID=AlpagaUser;Password=AlpagaUser;Initial Catalog=Alpaga;Server=192.168.0.100\\HACKATHON";
+        private string connexion = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = PERMAFUNGI; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         private User utilisateur = new User()
         {
             Nom = "Agnaou",

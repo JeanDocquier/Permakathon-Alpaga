@@ -14,8 +14,8 @@ namespace PermaFungiApp.Controllers.API
 
     public class ProduitsController : ApiController
     {
-        private string connexion = "Persist Security Info=False;User ID=AlpagaUser;Password=AlpagaUser;Initial Catalog=Alpaga;Server=192.168.0.100\\HACKATHON";
-
+        //private string connexion = "Persist Security Info=False;User ID=AlpagaUser;Password=AlpagaUser;Initial Catalog=Alpaga;Server=192.168.0.100\\HACKATHON";
+        private string connexion = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = PERMAFUNGI; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public HttpResponseMessage Get()
         {
             ProduitRepository ProdRepo = new ProduitRepository(connexion);
